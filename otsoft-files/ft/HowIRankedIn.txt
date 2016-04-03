@@ -1,0 +1,47 @@
+******Application of Constraint Demotion******
+
+Input file:  C:\Users\Kristine\Desktop\OTSoft2.4\OTSoft2.4/FilesForIn\In.txt
+
+
+******Now doing Stratum #1******
+
+  Parse-syll is excluded from stratum; prefers loser *[(Igo)(A)] for /igoa/.
+  Align(PWd,L;Ft,L) is excluded from stratum; prefers loser *[(Igo)(A)] for /igoa/.
+
+  FtBin favors no losers, joins new stratum.
+  Trochee favors no losers, joins new stratum.
+  Edgemost-R favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (newly ranked):    FtBin
+                               Trochee
+                               Edgemost-R
+
+  Markedness constraints still unranked:
+    Parse-syll
+    Align(PWd,L;Ft,L)
+  Faithfulness constraints still unranked:
+    (none)
+
+******Now doing Stratum #2******
+
+  Search found no unranked constraints that prefer losers.
+
+  Parse-syll favors no losers, joins new stratum.
+  Align(PWd,L;Ft,L) favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (already ranked):  FtBin
+                               Trochee
+                               Edgemost-R
+  Stratum 2 (newly ranked):    Parse-syll
+                               Align(PWd,L;Ft,L)
+
+  Markedness constraints still unranked:
+    (none)
+  Faithfulness constraints still unranked:
+    (none)
+
+Ranking is complete and yields successful grammar.

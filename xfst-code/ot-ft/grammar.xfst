@@ -1,0 +1,483 @@
+# OT-FT: GRAMMAR.XFST
+# XFST Code for Samoan primary stress in monomorphemes, using feet, Karttunen OT
+# Time-stamp: <2016-03-18 14:12:36 amoebe>
+
+# Run input file to generate all possible stress patterns over heavy
+# and light syllables (P=primary, S=secondary, W = unstressed)
+
+echo << Generating language of input strings >> 
+
+source ../auxiliary/gen.xfst
+
+############################
+## DEFINE FOOT PARSING ##
+############################
+
+echo << Parsing language of input strings into feet >> 
+
+# Allow any W to be unparsed, mark as X
+
+define MarkUnparsed [ "W" (->) "X" ];
+
+# Try:
+# define XGen Gen .o. MarkUnparsed;
+
+# push XGen;
+# down L;
+# down LL;
+# down HH;
+
+define Heavy [ "[" "H" "]" ];
+define Light [ "[" "L" "]" ];
+
+# "Wrap parentheses around a non-empty sequence of parsed syllables"
+
+define FtParse [ [ \"X" [ Heavy | Light ] ]+ -> "(" ... ")" ];
+
+#Try:
+# push FtParse;
+# down "S[L]W[L]";
+# down "X[L]S[L]W[L]";
+# down "S[L]X[H]W[L]";
+# down "S[H]X[H]W[L]";
+# down "S[H]X[H]W[L]S[H]";
+
+# Generate input strings of syllables marked with degree of stress and weight
+
+define GenFt [ Gen .o. MarkUnparsed .o. FtParse] ;
+
+# Try:
+#push GenFt;
+#down LL;
+
+
+###############################
+###############################
+#### DEFINE CONSTRAINTS ####
+###############################
+###############################
+
+echo << Define Culminativity >> 
+
+###############################
+#### DEFINE CULMINATIVITY ####
+###############################
+
+# Allow only strings containing exactly one P
+
+define Culminativity [ $.P ];
+
+# Try:
+# push Culminativity;
+# down "P[L]S[L]P[L]";
+# down "P[L]S[L]";
+# down "S[L]S[L]";
+
+###############################
+#### DEFINE FOOT BINARITY ####
+###############################
+
+echo << Define FootBinarity >> 
+
+# FootBinarity
+# Definition in Zuraw et al. 2014: A foot must contain exactly two
+# moras.
+# Here: parentheses may include either exactly one H, or exactly two Ls
+# Note: this does not say that a sequence of exactly two moras must
+# form a foot.
+
+# Restrict a foot (span between parentheses) to contain exactly one
+# heavy syllable, preceded by degree of stress symbol, any stress is
+# okay, except X which is parsed
+# These constraints only accept a single foot, we'll later express a
+# restriction for the input string by concatenating these restricted
+# feet
+
+define FtBinH [ "(" \"X" Heavy ")" ];
+
+# Try:
+# push FtBinH;
+# down "(S[H])";
+# down "(W[H])";
+# down "(X[H])";
+# down "(S[H])(S[H])";
+# down "(S[H]S[H])";
+# down "(S[H]W[H])";
+# down "(S[H]W[L])";
+# down "(W[H]S[H])";
+# down "(W[H])(S[H])";
+# down "((((S[H])";
+
+# Restrict material between two parentheses to contain exactly two light syllables, and no other syllables
+# Cannot contain X[L];
+
+define FtBinLL [ "(" [ \"X" Light]^2 ")" ];
+
+# push FtBinLL;
+# down "(S[H])";
+# down "(S[L])";
+# down "(S[L]W[H])";
+# down "(S[L]W[L])";
+# down "(P[L]W[L])";
+# down "(W[L]W[L])";
+# down "(X[L]W[L])";
+# down "(W[L]S[L])";
+# down "(S[L]S[L])";
+# down "(S[L]X[L])";
+# down "X[L](W[H]W[H])";
+# down "X[L](W[L]W[L])";
+# down "(S[L]W[L]W[L])";
+# down "(S[L]W[L]W[H])";
+# down "(S[L]W[L])(S[L]W[L])";
+# down "(S[L]W[L])X[H](W[H]W[H])";
+
+# Now allow a string to include a string of H or LL feet, with
+# unparsed syllables interspersed.
+
+define Unparsed [ "X" "[" ? "]" ];
+
+define FtBin [ FtBinH | FtBinLL | Unparsed ]*;
+
+# Try:
+# push FtBin;
+# down "X[H]";
+# down "S[H]";
+# down "W[L]H[L]";
+# down "(S[H])";
+# down "(W[H])";
+# down "(X[H])";
+# down "(T[H])";
+# down "X[L](S[H])";
+# down "X[H](S[H])";
+# down "(S[H]W[L])";
+# down "(W[H]W[H])";
+# down "(S[L]W[L])";
+# down "(S[L]W[L]W[L])";
+# down "(W[L]W[L]W[L])";
+# down "(S[H]S[H])";
+# down "(S[H])(S[H])";
+# down "(W[H])(S[H])";
+# down "(W[H])(S[H])X[L]";
+# down "(W[H])(S[H])X[H]";
+# down "X[H](W[H])(S[H])";
+# down "(S[L]W[L])X[H]";
+# down "(W[H])(W[H])X[H]";
+# down "(S[L]W[L])X[H](W[H])";
+# down "(S[L]W[L])X[H](W[H]W[H])";
+# down "(S[L]W[L])X[H](W[L]S[L])(S[H])";
+# down "(S[L]W[L])X[H](W[L]S[H])(S[H])";
+# down "X[H](S[L]W[L])X[H](W[L]S[L])(S[H])";
+
+######################################
+#### DEFINE RHYTHM TYPE = TROCHEE ####
+######################################
+
+echo << RhythmType=Trochee >> 
+
+# Zuraw et al. 2014 definition: A foot must have stress on its initial
+# mora, and its initial mora only (we assume that in a stressed long
+# vowel the stress belongs to the first mora)
+
+# In a footed H (i.e. not X[H], but S|W[H]), allow only (S[H]), and
+# not (W[H])
+# In a footed LL, allow only (S[L]W[L]), and not (W[L]W[L]),
+# (W[L]S[L]) or (S[L]S[L])
+#! Note if I had used moras as atomic symbols, I could refer to them
+#! here, instead of referring separately to Hs and Ls
+#! Here I made the choice to not assume feet are binary and made the
+#! constraint as general as possible, so for instance, allows (W[H]W[L])(S[L])
+#! Only restricts initial L in a foot, non-initial L in a foot and H feet
+
+# Define subrule for H syllables
+# use of => restriction operator
+
+# any occurrence of "[H])" (a footed heavy) must be preceded by "(S" or "(P"
+
+define Stressed [ "S" | "P" ];
+
+define RhTypeTrocheeH [ [ Heavy ")" ] => "(" Stressed _ ];
+
+
+# Try:
+push RhTypeTrocheeH;
+down "S[H]";
+down "(S[H])";
+down "(P[H])";
+down "(W[H])";
+down "(S[H])(S[H])";
+down "(S[H])(W[H])";
+down "(S[H])ABCD";
+down "(S[H])(W[L])";
+
+# Define subrule for LL feet
+# The first L in a foot must be strong, and all non-intial Ls in a
+# foot must be weak, a light can also be unparsed
+# Don't enforce foot binarity!
+
+define RhTypeTrocheeLL [ "[" "L" => "(" Stressed _ , "]" "W" _ , "X" _ ] ;
+
+# Try:
+# push RhTypeTrocheeLL;
+# down "X[L]";
+# down "(S[H])";
+# down "(S[L])";
+# down "(W[L])";
+# down "(S[L])(S[L])";
+# down "(S[L]S[L])";
+# down "(S[L]W[L])";
+# down "(W[L]W[L])";
+# down "(W[L]S[L])";
+# down "(W[L]P[L])";
+# down "(S[L]W[L]W[L])";
+# down "(P[L]W[L]W[L])";
+# down "(P[L]W[L]X[L])";
+# down "(S[L]W[L]W[L]S[L])";
+# down "(S[L]S[H])"; 
+
+# define entire RhTypeTrochee rule
+
+define RhTypeTrochee [ RhTypeTrocheeH & RhTypeTrocheeLL ];
+
+# Try:
+#push RhTypeTrochee;
+# down "X[H]";
+# down "X[L]";
+# down "(S[H])";
+# down "S[H]";
+# down "(S[L])";
+# down "(W[L])";
+# down "(W[H])";
+# down "(S[L])(S[L])";
+# down "(S[L]S[L])";
+# down "(S[L]W[L])";
+# down "(W[L]W[L])";
+# down "(W[L]S[L])";
+# down "(S[L]W[L]W[L])";
+# down "(S[L]W[L]W[L]S[L])";
+# down "(S[L]S[H])"; 
+# down "(S[L]W[H])"; 
+# down "(S[L]W[L])X[H]"; 
+# down "(S[L]W[L])X[L]"; 
+# down "(S[L]W[L])S[H]"; 
+# down "(S[L]W[L])(S[H])"; 
+# down "(S[L]W[L]W[L])X[L]"; 
+# down "X[L](S[L]W[L]W[L])"; 
+# down "X[H](S[L]W[L]W[L])"; 
+# down "X[L](W[L]W[L]W[L])"; 
+# clear stack;
+
+
+###########################
+#### DEFINE EDGEMOST-R ####
+###########################
+
+echo << Define Edgemost-R >> 
+
+# 1. We can say Edgemost-R is actually categorical, not gradient. see
+#    definition "The end of the prosodic word must coincide with the end
+#    of a primary-stressed foot."
+
+# For monomorphs, we don't refer to prosodic word, but to the right
+# edge of the input string. So this means that the input string must
+# end with a primary-stressed foot.
+
+define Foot ["(" [\[ "(" | ")" ]]*  ")"];
+define PrimaryFoot [ Foot & $["P"] ];
+define EdgemostR [ \P* PrimaryFoot];  
+
+# Try:
+# push EdgemostR;
+# down "()P[H]";
+# down "(P[H]";
+# down "P[H])";
+# down "P[H]";
+# down "(P[H])";
+# down "(P[H])X[L]";
+# down "(P[H]sdfsdfsdfsdfsd)";
+# down "(abdcdsfsdfsdfdP[H])";
+# down "(abdcdsfsdfsdfdP[H]sdfdfdfdfd)";
+# down "(P[L]P[H])"
+# down "P[L]W[L]";
+# down "(P[L]W[L])";
+# down "P[L](P[L]W[L])";
+# down "(P[L])(P[L]W[L])";
+# down "(W[L]P[L])";
+# down "(W[L]P[L])(S[H])";
+# down "(W[L]P[L]))";
+
+
+###############################
+#### DEFINE PARSE SYLLABLE ####
+###############################
+
+echo << Define Parse-Syllable >> 
+
+# Zuraw et al. 2014 definition: (Prince & Smolensky 1993), (12b)
+# Every syllable must be included in a foot.
+#! This is a gradient constraint!
+# Just count up the number of Xs
+
+# Define family of Parse constraints, almost identical to Karttunen
+#1998 (except no left brackets)
+
+# Careful to have ~ scope over $[]!! Typo in Karttunen 1998
+
+define ParseSyll ~[$"X"] ;
+define ParseSyll1 ~[[$"X"]^>1] ;
+define ParseSyll2 ~[[$"X"]^>2] ;
+define ParseSyll3 ~[[$"X"]^>3] ;
+define ParseSyll4 ~[[$"X"]^>4] ;
+define ParseSyll5 ~[[$"X"]^>5] ;
+define ParseSyll6 ~[[$"X"]^>6] ;
+define ParseSyll7 ~[[$"X"]^>7] ;
+
+# Try:
+# push ParseSyll;
+# down X[L];
+# down X[L]X[H];
+# down X[H](S[H]);
+# down (S[L]W[L]);
+# down X[L](S[L]W[L]);
+# down (S[L]X[H]W[L]);
+# down (S[L][H]W[L]);
+# down (S[L]W[H])X[H];
+# down X[L](S[H]W[L])X[H];
+
+
+# Try:
+# push ParseSyll1;
+# down X[L];
+# down X[L]X[H];
+# down (S[L]W[L]);
+# down X[L](S[L]W[L]);
+# down (S[L]X[H]W[L]);
+# down (S[L][H]W[L]);
+# down (S[L]W[H])X[H];
+# down X[L](S[H]W[L])X[H];
+
+# Try:
+# push ParseSyll2;
+# down X[L];
+# down X[L]X[H];
+# down X[L]X[H]X[L];
+# down (S[L]W[L]);
+# down X[L](S[L]W[L]);
+# down (S[L]X[H]W[L]);
+# down (S[L][H]W[L]);
+# down (S[L]W[H])X[H];
+# down X[L](S[H]W[L])X[H];
+# down X[L](S[H]X[L]W[L])X[H];
+
+# Try:
+# push ParseSyll3;
+# down X[L];
+# down X[L]X[H];
+# down X[L]X[H]X[L];
+# down X[L]X[H]X[L]X[H];
+# down (S[L]W[L]);
+# down X[L](S[L]W[L]);
+# down (S[L]X[H]W[L]);
+# down (S[L][H]W[L]);
+# down (S[L]W[H])X[H];
+# down X[L](S[H]W[L])X[H]X[L];
+# down X[L](S[H]X[L]W[L]X[L])X[H];
+# down X[L](S[H]X[L]W[L])X[H]X[L];
+
+
+
+### Align(PWd,L;Ft,L)
+
+# Definition: beginning of PWd must coincide with beginning of foot.
+# Change to "beginning of input string must coincide with beginning of foot"
+
+define AlignWdLFtL ["(" ?*];
+
+#Test:
+# push AlignWdLFtL;
+# down "(sdfdsfs)()()()";
+# down "sdfdsfs)()()()";
+# down "s(dfdsfs)()()()";
+
+
+############################################
+####  NULL OUTPUTS ###
+############################################
+
+echo << Define maps of HL-final and lone Ls to Null output >> 
+
+# Replace string-terminal Heavy ? ? ?  Light ( ")" ) with Null if
+#sequence is string-final.  The ??? allows for a possible )W( for foot
+#boundaries and a stress mark
+
+# Change multicharacter "Null" to "N u l l}
+
+define NullFinHL [  [?* Heavy [?]^<4 Light (")") ] ->@ {Null} || _ .#. ];
+
+# define Test [ GenFt .O. NullFinHL ];
+# push Test;
+# down HL;
+# down HHHHL;
+# down HLHL;
+# down HLH;
+
+# Any (optionally footed) light syllable that is not preceded or
+#followed by anything is mapped to Null
+
+define NullLoneL [ [ ("(") ? Light (")") ] -> {Null} || .#.  _ .#. ];
+
+# define Test [ GenFt .O. NullLoneL ];
+# push Test;
+# down L;
+# down LL;
+
+####################################
+####################################
+#### DEFINE LENIENT COMPOSITION ####
+####################################
+####################################
+
+echo << Define grammar with lenient composition of Gen, foot parser, and constraints >> 
+
+
+############################################
+####  COMPOSITION OF GEN AND CONSTRAINTS ###
+############################################
+
+
+define LSmo [ GenFt .O. NullFinHL .O. NullLoneL .O. Culminativity .O. FtBin .O. RhTypeTrochee .O. EdgemostR .O. ParseSyll .O. ParseSyll1 .O. ParseSyll2 .O. ParseSyll3 .O. ParseSyll4 .O. ParseSyll5 .O. ParseSyll6 .O. ParseSyll7 .O. AlignWdLFtL ];
+
+
+# push LSmo;
+# down "L";
+# down "H";
+# down "HL";
+# down "LL";
+# down "LH";
+# down "HH";
+# # Try "igoa"
+# down "LLL";
+# down "LLLL";
+# # Initial dactyl
+# down "LLLLL";
+# down "LHH";
+# down "HHH";
+
+# # Multiple parses for 7 Ls and 9 Ls
+# down "LLLLLLL";
+# down "LLLLLLLL"; 
+# down "LLLLLLLLL";
+
+
+######################
+######################
+#### TEST GRAMMAR ####
+######################
+######################
+
+echo << Testing expressiveness of grammar >> 
+
+source ../auxiliary/test-overgen.xfst
+
+read text < ../auxiliary/gold-output5-footed.txt;
+
+source ../auxiliary/test-undergen.xfst

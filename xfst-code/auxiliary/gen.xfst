@@ -1,0 +1,29 @@
+# GEN.XFST
+# Common definition of Gen across grammars
+# Define language of all possible stress patterns over all sequences
+# of weighted syllables
+# Time-stamp: <2016-03-18 08:00:28 amoebe>
+
+######################
+###### INPUT #########
+######################
+
+# Raw input is {L,H}*
+
+define Input [ "L" | "H" ]*;
+
+# Parse sequences of light and heavy syllables into being strong or weak
+
+define SWParse [ ? -> [ "S" "[" | "W" "[" ] ... "]" ]; 
+
+# Optionally elevate any strong (secondary stress) syllable to a primary stress syllable
+
+define ElevateProm [ "S" (->) "P" ];
+
+# Generate input strings of syllables marked with degree of stress and weight
+
+define Gen [ Input .o. SWParse .o. ElevateProm ];
+
+# Try:
+# push Gen;
+# down LL;

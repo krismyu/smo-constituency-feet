@@ -1,0 +1,836 @@
+# DIR-SYLL: GRAMMAR.XFST
+# XFST Code for Samoan primary stress in monomorphemes, using syllables, Karttunen OT
+# Time-stamp: <2016-03-18 15:41:46 amoebe>
+
+
+###############################
+###############################
+#### DEFINE CANDIDATE SET ####
+###############################
+###############################
+
+######################
+###### INPUT #########
+######################
+
+# Run input file to generate all possible stress patterns over heavy
+# and light syllables (P=primary, S=secondary, W = unstressed)
+
+echo << Generating language of input strings >> 
+
+source ../auxiliary/gen.xfst
+
+
+###############################
+###############################
+#### DEFINE CONSTRAINTS ####
+###############################
+###############################
+
+##########################
+###### Culminativity #####
+##########################
+
+define Culminativity [ $.P ];
+
+####################
+###### NoClash #####
+####################
+
+
+
+define Weak "W" "[" [H|L] "]" ;
+define Stressed ["S"|"P"] "[" [H|L] "]" ;
+
+
+# *Clash: no adjacent S's
+
+# No strings containing S[?]S sequences
+
+# Let's define a variable for [Stressed Stressed]
+
+define S2 [Stressed Stressed];
+
+define No1Clash ~[$[S2]];
+define No2Clash ~[$[Stressed]^3] & ~[[$[S2]]^2];
+define No3Clash ~[$[Stressed]^4] &  ~[[$[S2]]^3] & ~[?* [Stressed]^3 $[[Stressed]^2]] & ~[$[[Stressed]]^2 [Stressed]^3 ?*];
+define No4Clash ~[$[Stressed]^5] &  ~[[$[S2]]^4] & ~[?* [Stressed]^4 $[[Stressed]^2]] & ~[$[[Stressed]^2] [Stressed]^4 ?*] & ~[[$[[Stressed]^3]]^2] & ~[?* [Stressed]^3 [$[S2]]^2] & ~[ [$[S2]]^2 [Stressed]^3 ] & ~[$[S2] [Stressed]^3 $[S2] ];
+
+
+# # Try:
+# push No1Clash;
+# down "S[L]S[L]";
+# down "S[L]S[L]S[L]";
+# down "S[L]W[L]";
+# down "W[L]S[L]";
+# down "W[L]X[L]";
+# down "W[L]W[L]";
+# down "W[H]W[H]";
+# down "W[H]S[H]W[H]";
+# down "W[H]S[H]S[L]W[H]";
+# down "W[H]S[H]S[L]W[H]S[L]S[L]";
+# down "S[H]S[L]W[H]S[H]S[L]W[H]S[L]S[L]";
+
+# # Try:
+# push No2Clash;
+# down "S[L]S[L]";
+
+# # Where are two clashes here, and it should not be accepted by No2Clash
+# down "S[L]S[L]S[L]"; 
+
+# down "W[H]S[H]S[L]W[H]S[L]S[L]";
+# down "S[L]S[L]S[L]S[L]"; 
+
+# down "S[L]W[L]";
+# down "W[L]S[L]";
+# down "W[L]X[L]";
+# down "W[L]W[L]";
+# down "W[H]W[H]";
+# down "W[H]S[H]W[H]";
+# down "W[H]S[H]S[L]W[H]";
+# down "W[H]S[H]S[L]W[H]S[L]S[L]";
+# down "S[H]S[L]W[H]S[H]S[L]W[H]S[L]S[L]";
+
+# # Try:
+# push No3Clash;
+# down "S[L]S[L]";
+# down "S[L]S[L]S[L]";
+# down "S[L]S[L]S[L]S[L]";
+# down "S[L]S[L]S[L]S[L]W[H]";
+# down "S[L]S[L]W[H]S[L]S[L]";
+# down "S[L]S[L]S[L]W[H]S[L]S[L]";
+# down "S[L]S[L]S[L]W[H]S[L]S[L]S[L]";
+# down "S[L]S[L]W[H]S[L]S[L]S[L]";
+# down "S[L]W[L]";
+# down "W[L]S[L]";
+# down "W[L]X[L]";
+# down "W[L]W[L]";
+# down "W[H]W[H]";
+# down "W[H]S[H]W[H]";
+# down "W[H]S[H]S[L]W[H]";
+# down "W[H]S[H]S[L]W[H]S[L]S[L]";
+# down "S[H]S[L]W[H]S[H]S[L]W[H]S[L]S[L]";
+
+# # Try:
+# push No4Clash;
+# # Try 2 vs. 3 vs. 4 vs. 5 separate clashes
+# down "W[H]S[H]S[L]W[H]S[L]S[L]";
+# down "S[H]S[L]W[H]S[H]S[L]W[H]S[L]S[L]";
+# down "S[H]S[L]W[H]S[H]S[L]W[H]S[L]S[L]W[H]S[H]S[H]";
+# down "S[H]S[L]W[H]S[H]S[L]W[H]S[L]S[L]W[H]S[H]S[H]W[H]S[H]S[H]";
+
+# # Try a sequence SSSSS
+# down S[H]S[L]S[H]S[L]S[H];
+# down W[H]S[H]S[L]S[H]S[L]S[H];
+# down W[H]S[H]S[L]S[H]S[L]S[H]W[H];
+# down W[H]S[H]S[L]W[H]S[H]S[L]S[H]W[H];
+
+# # Try a sequence SSS + SSS
+# down W[H]S[H]S[L]S[H]W[H]S[L]S[H]S[H];
+# down W[H]S[H]S[L]S[H]W[H]S[L]W[H]S[H]S[H];
+# down W[H]S[H]S[L]S[H]W[H]S[H]S[H];
+
+# # Try sequence SS + SSS + SS or SSS + SS + SS or SS + SS + SSS
+# # should not accept
+# down W[H]S[H]S[H]W[H]S[H]S[L]S[H]W[H]S[H]S[H];
+# down W[H]S[H]S[L]S[H]W[H]S[H]S[H]W[H]S[H]S[H];
+# down W[H]S[H]S[H]W[H]S[H]S[H]W[H]S[H]S[H]S[L];
+
+# # should accept
+# down W[H]S[H]S[H]W[H]S[H]S[L]S[H]W[H];
+# down W[H]S[L]S[H]W[H]S[H]S[H]W[H]S[H]S[H];
+# down W[H]S[L]S[H]S[H]W[H]S[H]S[L]W[H];
+
+
+####################
+###### NoLapse #####
+####################
+
+# *Lapse: no adjacent Xs or Ws
+
+# No strings containing [X|W][?][X|W] sequences, change to ignore "X"
+# Note: Kager encyclopedia article (72) shows that I have to penalize
+# any pair of adjacent, e.g. WWW gets 2 violations and WWWW gets 3.
+
+# Let's define a variable for [Weak Weak]
+
+define W2 [Weak Weak];
+
+define No1Lapse ~[$[W2]];
+define No2Lapse ~[$[Weak]^3] & ~[[$[W2]]^2];
+define No3Lapse ~[$[Weak]^4] &  ~[[$[W2]]^3] & ~[?* [Weak]^3 $[[Weak]^2]] & ~[$[[Weak]]^2 [Weak]^3 ?*];
+define No4Lapse ~[$[Weak]^5] &  ~[[$[W2]]^4] & ~[?* [Weak]^4 $[[Weak]^2]] & ~[$[[Weak]^2] [Weak]^4 ?*] & ~[[$[[Weak]^3]]^2] & ~[?* [Weak]^3 [$[W2]]^2] & ~[ [$[W2]]^2 [Weak]^3 ] & ~[$[W2] [Weak]^3 $[W2] ];
+
+# # Try:
+# push No1Lapse;
+# down "W[L]W[L]";
+# down "W[L]W[L]W[L]";
+# down "W[L]S[L]";
+# down "S[L]W[L]";
+# down "S[L]X[L]";
+# down "S[L]S[L]";
+# down "S[H]S[H]";
+# down "S[H]W[H]S[H]";
+# down "S[H]W[H]W[L]S[H]";
+# down "S[H]W[H]W[L]S[H]W[L]W[L]";
+# down "W[H]W[L]S[H]W[H]W[L]S[H]W[L]W[L]";
+
+# # Try:
+# push No2Lapse;
+# down "W[L]W[L]";
+
+# # There are two lapses here, and it should not be accepted by No2Lapse
+# down "W[L]W[L]W[L]"; 
+
+# down "S[H]W[H]W[L]S[H]W[L]W[L]";
+# down "W[L]W[L]W[L]W[L]"; 
+
+# down "W[L]S[L]";
+# down "S[L]W[L]";
+# down "S[L]X[L]";
+# down "S[L]S[L]";
+# down "S[H]S[H]";
+# down "S[H]W[H]S[H]";
+# down "S[H]W[H]W[L]S[H]";
+# down "S[H]W[H]W[L]S[H]W[L]W[L]";
+# down "W[H]W[L]S[H]W[H]W[L]S[H]W[L]W[L]";
+
+# # Try:
+# push No3Lapse;
+# down "W[L]W[L]";
+# down "W[L]W[L]W[L]";
+# down "W[L]W[L]W[L]W[L]";
+# down "W[L]W[L]W[L]W[L]S[H]";
+# down "W[L]W[L]S[H]W[L]W[L]";
+# down "W[L]W[L]W[L]S[H]W[L]W[L]";
+# down "W[L]W[L]W[L]S[H]W[L]W[L]W[L]";
+# down "W[L]W[L]S[H]W[L]W[L]W[L]";
+# down "W[L]S[L]";
+# down "S[L]W[L]";
+# down "S[L]X[L]";
+# down "S[L]S[L]";
+# down "S[H]S[H]";
+# down "S[H]W[H]S[H]";
+# down "S[H]W[H]W[L]S[H]";
+# down "S[H]W[H]W[L]S[H]W[L]W[L]";
+# down "W[H]W[L]S[H]W[H]W[L]S[H]W[L]W[L]";
+
+# # Try:
+# push No4Lapse;
+# # Try 2 vs. 3 vs. 4 vs. 5 separate lapses
+# down "S[H]W[H]W[L]S[H]W[L]W[L]";
+# down "W[H]W[L]S[H]W[H]W[L]S[H]W[L]W[L]";
+# down "W[H]W[L]S[H]W[H]W[L]S[H]W[L]W[L]S[H]W[H]W[H]";
+# down "W[H]W[L]S[H]W[H]W[L]S[H]W[L]W[L]S[H]W[H]W[H]S[H]W[H]W[H]";
+
+# # Try a sequence WWWWW
+# down W[H]W[L]W[H]W[L]W[H];
+# down S[H]W[H]W[L]W[H]W[L]W[H];
+# down S[H]W[H]W[L]W[H]W[L]W[H]S[H];
+# down S[H]W[H]W[L]S[H]W[H]W[L]W[H]S[H];
+
+# # Try a sequence WWW + WWW
+# down S[H]W[H]W[L]W[H]S[H]W[L]W[H]W[H];
+# down S[H]W[H]W[L]W[H]S[H]W[L]S[H]W[H]W[H];
+# down S[H]W[H]W[L]W[H]S[H]W[H]W[H];
+
+# # Try sequence WW + WWW + WW or WWW + WW + WW or WW + WW + WWW
+# # should not accept
+# down S[H]W[H]W[H]S[H]W[H]W[L]W[H]S[H]W[H]W[H];
+# down S[H]W[H]W[L]W[H]S[H]W[H]W[H]S[H]W[H]W[H];
+# down S[H]W[H]W[H]S[H]W[H]W[H]S[H]W[H]W[H]W[L];
+
+# # should accept
+# down S[H]W[H]W[H]S[H]W[H]W[L]W[H]S[H];
+# down S[H]W[L]W[H]S[H]W[H]W[H]S[H]W[H]W[H];
+# down S[H]W[L]W[H]W[H]S[H]W[H]W[L]S[H];
+
+#####################
+#### DEFINE WSP  ####
+#####################
+
+# Prince’s (1990) Weight-to-Stress Principle (2), codified as a
+# constraint (Prince and Smolensky 1993).
+# (67): Weight-to-Stress Principle: Heavy syllables are prominent in foot structure and on the grid.
+# Also: "The WSP goes from weight to stress: if heavy then stressed
+# (equivalently, if unstressed then light)" in page 66 of ROA 2002
+# version, following (83)
+
+# My definition: S[H] or P[H], no W[H]
+
+# Preliminaries
+define Heavy "[" "H" "]";
+define Light "[" "L" "]";
+
+# Define subrule for H syllables, WSP
+
+define WSP [ Heavy  => \W _ ];
+
+# # Try:
+# push WSP;
+# down "S[H]";
+# down "W[H]";
+# down "S[H]S[H]";
+# down "S[H]ABCD";
+# down "S[H]W[L]";
+# down "S[H]W[H]";
+# down "W[H]ABCD";
+# down "W[H]W[L]";
+
+
+###########################
+#### DEFINE Align-x2-R ####
+###########################
+
+# Preliminaries
+
+define Secondary ["S" [Heavy | Light] ];
+define Primary ["P" [Heavy | Light] ];
+define AnySyllable [Weak | Secondary | Primary];
+
+
+define AnySyllable [ ? "[" ? "]" ];
+
+
+# Every primary stress must be at the right edge.
+define Alignx2R0 Primary => _ .#.;
+
+# Every primary stress must be at most one syllable from the right edge.
+
+define Alignx2R1 Primary => _ [AnySyllable]^<2 .#.;
+
+define Alignx2R2 Primary => _ [AnySyllable]^<3 .#.;
+define Alignx2R3 Primary => _ [AnySyllable]^<4 .#.;
+define Alignx2R4 Primary => _ [AnySyllable]^<5 .#.;
+define Alignx2R5 Primary => _ [AnySyllable]^<6 .#.;
+define Alignx2R6 Primary => _ [AnySyllable]^<7 .#.;
+define Alignx2R7 Primary => _ [AnySyllable]^<8 .#.;
+
+#define Alignx2Rk7 Alignx2R0 .O. Alignx2R1 .O. Alignx2R2 .O. Alignx2R3 .O. Alignx2R4 .O. Alignx2R5 .O. Alignx2R6 .O. Alignx2R7;
+
+# #Test
+# push Alignx2R0;
+# down "P[H]";
+# down "S[H]P[H]";
+# down "W[L]P[H]";
+# down "P[H]S[H]";
+# down "P[L]W[L]";
+# down "P[L]W[L]W[L]";
+
+# #Test: should allow 1 or less syllables to right edge
+# push Alignx2R1;
+# down "P[H]";
+# down "S[H]P[H]";
+# down "W[L]P[H]";
+# down "P[H]S[H]";
+# down "P[L]W[L]";
+# down "P[L]W[L]W[L]";
+
+# #Test: should allow 4 or less syllables to right edge
+# push Alignx2R4;
+# down "P[H]";
+# down "S[H]P[H]";
+# down "W[L]P[H]";
+# down "P[H]S[H]";
+# down "P[L]W[L]";
+# down "P[L]W[L]W[L]";
+# down "P[L]W[L]W[L]S[H]";
+# down "P[L]W[L]W[L]S[H]S[H]";
+# down "P[L]W[L]W[L]S[H]S[H]S[H]";
+# down "P[L]W[L]W[L]S[H]S[H]P[H]";
+
+###########################
+#### DEFINE Align-x1-L ####
+###########################
+
+# Preliminaries: define stressed to be secondary or primary
+
+# 0. To get 0 violations, ?W*, 0
+# 1. To get 1 violation, ?SW*, 1
+# 2. To get 2 violations, ?WSW*, 2
+# 3. To get 3 violations, ?W^2SW* or "?SSW*", 3, or 1+2
+# 4. To get 4 violations, ?W^3SW* or ?SWSW*, 4, or 1+3
+# 5. To get 5 violations, ?W^4SW* or ?SWWSW* or ?WSSW* 5, 1+4, 2+3 
+# 5. To get 6 violations, ?W^5SW* or ?SWWWSW* or ?WSWSW* or ?WSSSW* 6, 1+5, 2+4, 1+2+3
+# 5. To get 7 violations, ?W^6SW* or ?SWWWWSW* or ?WSWWSW* or ?WWSSW*
+# or ?SSWSW*
+# 7, 1+6, 2+5, 3+4, 1+2+4
+# 5. To get 8 violations, ?W^7SW* or ?SWWWWWSW* or ?WSWWWSW* or
+# ?WWSWSW* 8, 1+7, 2+6, 3+5, 1+2+5, 1+3+4
+
+# 9 violations
+# 1. 9 x
+# 2. 1+8 x
+# 3. 2+7 x
+# 4. 3+6 x
+# 5. 4+5 x
+# 6. 1+2+6
+# 7. 1+3+5
+# 8. 2+3+4
+
+
+define SWStar [Stressed [Weak]*];
+
+define Alignx1L1 ~[AnySyllable SWStar];
+define Alignx1L2 ~[AnySyllable Weak SWStar]; 
+define Alignx1L3 ~[AnySyllable W2 SWStar] & ~[AnySyllable Stressed SWStar];
+define Alignx1L4 ~[AnySyllable W2 Weak SWStar] & ~[AnySyllable Stressed Weak SWStar];
+define Alignx1L5 ~[AnySyllable W2^2 SWStar] & ~[AnySyllable Stressed W2 SWStar] & ~[AnySyllable Weak Stressed SWStar];
+define Alignx1L6 ~[AnySyllable Weak^5 SWStar] & ~[AnySyllable Stressed W2 Weak SWStar] & ~[AnySyllable Weak Stressed Weak SWStar] & ~[AnySyllable S2 SWStar];
+define Alignx1L7 ~[AnySyllable Weak^6 SWStar] & ~[AnySyllable Stressed W2^2 SWStar] & ~[AnySyllable Weak Stressed W2 SWStar] & ~[AnySyllable W2 Stressed SWStar] & ~[AnySyllable S2 Weak SWStar];
+define Alignx1L8 ~[AnySyllable Weak^7 SWStar] & ~[AnySyllable Stressed Weak^5 SWStar] & ~[AnySyllable Weak Stressed Weak^3 SWStar] & ~[AnySyllable W2 Stressed Weak SWStar] & ~[AnySyllable S2 W2 SWStar] & ~[AnySyllable Stressed Weak Stressed SWStar];
+
+define Alignx1L9 ~[AnySyllable Weak^8 SWStar] & ~[AnySyllable Stressed Weak^6 SWStar] & ~[AnySyllable Weak Stressed Weak^4 SWStar] & ~[AnySyllable W2 Stressed W2 SWStar] & ~[AnySyllable Weak^3 Stressed SWStar] & ~[AnySyllable S2 Weak^3 SWStar] & ~[AnySyllable Stressed Weak Stressed Weak SWStar] & ~[AnySyllable Weak S2 SWStar];
+
+define Alignx1L10 ~[AnySyllable Weak^9 SWStar] & ~[AnySyllable Stressed Weak^7 SWStar] & ~[AnySyllable Weak Stressed Weak^5 SWStar] & ~[AnySyllable W2 Stressed Weak^3 SWStar] & ~[AnySyllable Weak^3 Stressed Weak SWStar] & ~[AnySyllable S2 Weak^4 SWStar] & ~[AnySyllable Stressed Weak Stressed W2 SWStar] & ~[AnySyllable Weak S2 Weak SWStar] & ~[AnySyllable Stressed W2 Stressed SWStar];
+
+# Don't have more than n violations (up to 10)
+
+define Alignx1Lg1 [Alignx1L1 & Alignx1L2 & Alignx1L3 & Alignx1L4 & Alignx1L5 & Alignx1L6 & Alignx1L7 & Alignx1L8 & Alignx1L9 & Alignx1L10];
+define Alignx1Lg2 [Alignx1L2 & Alignx1L3 & Alignx1L4 & Alignx1L5 & Alignx1L6 & Alignx1L7 & Alignx1L8 & Alignx1L9 & Alignx1L10];
+define Alignx1Lg3 [Alignx1L3 & Alignx1L4 & Alignx1L5 & Alignx1L6 & Alignx1L7 & Alignx1L8 & Alignx1L9 & Alignx1L10];
+define Alignx1Lg4 [Alignx1L4 & Alignx1L5 & Alignx1L6 & Alignx1L7 & Alignx1L8 & Alignx1L9 & Alignx1L10];
+define Alignx1Lg5 [Alignx1L5 & Alignx1L6 & Alignx1L7 & Alignx1L8 & Alignx1L9 & Alignx1L10];
+define Alignx1Lg6 [Alignx1L6 & Alignx1L7 & Alignx1L8 & Alignx1L9 & Alignx1L10];
+define Alignx1Lg7 [Alignx1L7 & Alignx1L8 & Alignx1L9 & Alignx1L10];
+define Alignx1Lg8 [Alignx1L8 & Alignx1L9 & Alignx1L10];
+define Alignx1Lg9 [Alignx1L9 & Alignx1L10];
+
+
+# # Try:
+# push Alignx1L1;
+# down "W[L]"
+# down "S[H]W[L]"
+# down "S[H]S[L]"
+# down "S[H]S[L]W[H]"
+# down "S[H]W[L]P[H]"
+# down "S[H]W[L]W[H]"
+
+
+# # Try:
+# push Alignx1L2;
+# down "W[L]"
+# down "S[H]W[L]"
+# down "S[H]S[L]"
+# down "S[H]S[L]W[H]"
+# down "S[H]W[L]P[H]"
+# down "W[H]W[L]S[H]"
+# down "W[H]P[L]S[H]"
+# down "W[H]W[L]W[H]S[H]"
+
+# # Try:
+# push Alignx1L3;
+# down "W[L]"
+# down "S[H]W[L]"
+# down "S[H]S[L]"
+# down "S[H]S[L]W[H]"
+# down "S[H]W[L]P[H]"
+# down "W[H]W[L]S[H]"
+# down "W[H]P[L]S[H]"
+# down "W[H]W[L]W[H]S[H]"
+# down "P[H]S[L]W[H]S[H]"
+# down "P[H]S[L]S[H]S[H]"
+# down "P[H]S[L]S[H]W[H]"
+
+# # Try:
+# push Alignx1L4;
+# down "W[L]"
+# down "S[H]W[L]"
+# down "S[H]S[L]"
+# down "S[H]S[L]W[H]"
+# down "S[H]W[L]P[H]"
+# down "W[H]W[L]S[H]"
+# down "W[H]P[L]S[H]"
+# down "W[H]W[L]W[H]S[H]"
+# down "P[H]W[L]W[H]W[H]S[H]"
+# down "P[H]W[L]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]S[H]"
+# down "P[H]S[L]W[H]S[H]"
+# down "P[H]S[L]S[H]S[H]"
+# down "P[H]S[L]S[H]W[H]"
+
+# # Try:
+# push Alignx1L5;
+# down "W[L]"
+# down "S[H]W[L]"
+# down "S[H]S[L]"
+# down "S[H]S[L]W[H]"
+# down "S[H]W[L]P[H]"
+# down "W[H]W[L]S[H]"
+# down "W[H]P[L]S[H]"
+# down "W[H]W[L]W[H]S[H]"
+# down "P[H]W[L]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]S[H]"
+# down "P[H]S[L]W[H]S[H]"
+# down "P[H]S[L]S[H]S[H]"
+# down "P[H]S[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]W[H]S[L]"
+# down "P[H]W[L]S[L]S[L]W[H]S[L]"
+# down "P[H]W[L]S[L]S[L]W[H]W[L]"
+
+
+# # Try:
+# push Alignx1L6;
+# down "W[H]W[L]W[H]S[H]"
+# down "P[H]W[L]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]S[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]S[H]"
+# down "P[H]S[L]W[L]W[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]W[H]S[L]"
+# down "P[H]W[L]S[L]S[L]W[H]S[L]"
+# down "P[H]W[L]S[L]S[L]W[H]W[L]"
+# down "P[H]W[L]S[L]W[L]S[H]"
+# down "P[H]W[L]S[L]W[L]W[H]S[H]"
+# down "P[H]S[L]S[L]S[L]W[H]S[H]"
+# down "P[H]S[L]S[L]S[L]W[H]W[H]"
+# down "P[H]S[L]S[L]W[L]S[H]W[H]"
+
+
+# # Try:
+# push Alignx1L7;
+# down "W[H]W[L]W[H]S[H]"
+# down "P[H]W[L]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]S[L]"
+# down "W[H]W[L]S[H]W[H]W[H]W[H]W[H]S[L]"
+# down "P[H]S[L]W[H]S[H]"
+# down "P[H]S[L]S[H]S[H]"
+# down "P[H]S[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]S[H]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]S[H]S[H]"
+
+# down "P[H]S[L]W[L]W[L]W[H]S[L]"
+# down "P[H]W[L]S[L]S[L]W[H]S[L]"
+# down "P[H]W[L]S[L]W[L]W[H]S[L]"
+# down "P[H]W[L]W[H]S[L]W[L]S[H]"
+# down "P[H]W[L]W[H]S[L]S[L]W[H]"
+# down "P[H]S[L]S[L]W[L]W[H]S[H]"
+# down "P[H]S[L]S[L]W[L]S[H]W[H]"
+
+
+# # Try:
+# push Alignx1L8;
+
+# # 8
+# down "W[H]W[L]W[H]S[H]"
+# down "P[H]W[L]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]S[H]"
+
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]W[H]S[L]"
+
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]W[H]W[L]S[L]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]W[H]W[L]W[L]S[L]"
+
+# # 1+7
+# down "W[H]W[L]S[H]W[H]W[H]W[H]W[H]S[L]"
+# down "P[H]S[L]W[L]W[L]W[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]W[L]S[H]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]S[H]"
+
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[H]S[H]"
+
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[L]W[L]S[H]"
+
+
+# # 2+6
+# down "P[H]W[L]S[L]W[L]W[L]S[H]"
+
+# down "P[H]W[L]S[L]W[L]W[L]W[H]S[H]"
+
+# down "P[H]W[L]S[L]W[L]W[L]W[H]W[L]S[H]"
+# down "P[H]W[L]S[L]W[L]W[L]P[H]S[L]"
+# down "P[H]W[L]S[L]W[L]W[L]W[H]W[L]S[H]"
+
+# # 3+5
+# down "P[H]W[L]S[L]W[L]W[L]S[H]"
+# down "P[H]W[L]S[L]W[L]S[L]W[H]"
+
+# down "P[H]W[L]W[L]S[L]W[L]S[H]"
+
+# down "P[H]W[L]W[L]S[L]W[L]W[L]S[H]"
+# down "P[H]W[L]S[L]W[L]W[L]S[L]W[H]"
+
+# # 1+2+5
+# down "P[H]S[L]S[L]W[L]W[H]S[L]"
+
+# down "P[H]S[L]S[L]W[L]W[H]W[H]S[L]"
+# down "P[H]S[L]S[L]S[L]W[L]"
+# down "P[H]S[L]S[L]W[L]S[L]W[L]"
+
+
+# # 1+3+4
+# down "P[H]S[L]W[L]S[L]S[H]W[L]"
+
+# down "P[H]S[L]W[L]S[L]W[H]S[L]"
+# down "P[H]W[L]S[L]S[L]S[H]W[L]"
+
+# # Try:
+# push Alignx1L9;
+
+# # 9
+# down "W[H]W[L]W[H]S[H]"
+# down "P[H]W[L]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]W[H]S[L]"
+
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]W[H]W[L]S[L]"
+
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]W[H]W[L]W[L]S[L]"
+
+# # 1+8
+# down "W[H]W[L]S[H]W[H]W[H]W[H]W[H]S[L]"
+# down "P[H]S[L]W[L]W[L]W[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]W[L]S[H]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[H]S[H]"
+
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[L]W[L]S[H]"
+
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[L]W[L]W[L]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[L]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]S[H]W[L]S[H]"
+
+# # 2+7
+# down "P[H]W[L]S[L]W[L]W[L]S[H]"
+# down "P[H]W[L]S[L]W[L]W[L]W[H]S[H]"
+
+# down "P[H]W[L]S[L]W[L]W[L]W[H]W[L]S[H]"
+
+# down "P[H]W[L]S[L]W[L]W[L]P[H]W[L]S[H]"
+# down "P[H]W[L]S[L]W[L]W[L]W[H]W[L]W[L]S[H]"
+
+# # 3+6
+# down "P[H]W[L]S[L]W[L]W[L]S[H]"
+# down "P[H]W[L]S[L]W[L]S[L]W[H]"
+
+# down "P[H]W[L]W[L]S[L]W[L]W[L]S[H]"
+
+# down "P[H]W[L]S[L]W[L]W[L]S[L]W[H]"
+
+# # 4+5
+# down "P[H]W[L]W[L]W[L]S[L]S[L]W[L]W[H]"
+# down "P[H]W[L]W[L]W[L]S[L]W[L]S[L]W[H]"
+# down "P[H]W[L]W[L]S[L]W[L]S[L]W[L]W[H]"
+
+# # 1+2+6
+# down "P[H]S[L]S[L]W[L]W[H]W[L]S[L]"
+
+# down "P[H]S[L]W[L]S[L]W[H]W[L]S[L]"
+# down "P[H]S[L]S[L]W[L]W[H]S[L]W[L]"
+
+# # 1+3+5
+# down "P[H]S[L]W[L]S[L]W[H]S[L]"
+
+# down "P[H]S[L]W[L]S[L]W[H]W[H]S[L]"
+# down "P[H]S[L]W[L]W[L]S[L]W[H]S[L]"
+
+# # 2+3+4
+# down "P[H]W[L]S[L]S[L]S[H]W[L]"
+
+# down "P[H]W[L]S[L]S[L]W[H]S[L]"
+# down "P[H]W[L]S[L]W[L]W[H]S[L]"
+
+
+
+# # Try:
+# push Alignx1L8;
+# down "W[H]W[L]W[H]S[H]"
+# down "P[H]W[L]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]S[H]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]W[H]S[L]"
+# down "W[H]W[L]W[H]W[H]W[H]W[H]W[H]W[H]W[L]S[L]"
+# down "W[H]W[L]S[H]W[H]W[H]W[H]W[H]S[L]"
+# down "P[H]S[L]W[H]S[H]"
+# down "P[H]S[L]S[H]S[H]"
+# down "P[H]S[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]W[L]S[H]W[H]"
+# down "P[H]S[L]W[L]W[L]W[L]S[H]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[H]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[L]W[L]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]W[H]W[L]S[H]"
+# down "P[H]S[L]W[L]W[L]W[H]S[H]W[L]S[H]"
+
+# down "P[H]W[L]S[L]W[L]W[L]S[H]"
+# down "P[H]W[L]S[L]W[L]W[L]W[H]S[H]"
+# down "P[H]W[L]S[L]W[L]W[L]W[H]W[L]S[H]"
+
+# down "P[H]W[L]W[L]S[L]W[L]W[L]S[H]"
+# down "P[H]W[L]W[L]S[L]W[L]S[L]W[H]"
+# down "P[H]W[L]W[L]S[L]S[L]W[L]W[H]"
+# down "P[H]W[L]W[L]S[L]W[L]W[L]S[L]W[H]"
+
+
+# down "P[H]S[L]W[L]W[L]W[H]S[L]"
+# down "P[H]W[L]S[L]S[L]W[H]S[L]"
+# down "P[H]W[L]S[L]S[L]W[H]W[L]S[L]"
+# down "P[H]S[L]S[L]W[L]W[H]S[L]"
+# down "P[H]S[L]S[L]W[L]S[L]"
+
+# down "P[H]S[L]W[L]S[L]W[H]S[L]"
+# down "P[H]S[L]W[L]S[L]S[H]W[L]"
+# down "P[H]W[L]S[L]S[L]S[H]W[L]"
+# down "P[H]S[L]W[L]S[L]W[L]S[H]W[L]"
+# down "P[H]W[L]W[H]S[L]W[L]S[H]"
+# down "P[H]W[L]W[H]S[L]S[L]W[H]"
+# down "P[H]S[L]S[L]W[L]W[H]S[H]"
+# down "P[H]S[L]S[L]W[L]S[H]W[H]"
+
+# # Try:
+# push Alignx1Lg1;
+# down "S[H]W[H]";
+# down "S[H]S[H]";
+# down "S[H]W[L]S[H]";
+# down "S[H]W[L]W[L]S[H]";
+
+# push Alignx1Lg2;
+# down "S[H]W[H]";
+# down "S[H]S[H]";
+# down "S[H]W[L]S[H]";
+# down "S[H]W[L]W[L]S[H]";
+
+# push Alignx1Lg5;
+# down "S[H]W[L]S[L]P[H]"
+# down "S[H]S[L]W[L]P[H]"
+
+# # only one passes
+# push Alignx1Lg8;
+# down "S[H]S[H]W[L]S[L]P[H]"
+# down "S[H]S[H]S[L]W[L]P[H]"
+
+# # should pass and does
+# push Alignx1Lg9;
+# down S[H]S[H]W[L]S[L]P[H];
+# down S[H]S[H]S[L]W[L]P[H];
+
+# #only one should pass
+# push Alignx1Lg9;
+# down S[H]W[L]S[L]S[H]P[H];
+# down S[H]S[L]W[L]S[H]P[H];
+
+
+###########################
+#### NoLapseFollowingHeavy ####
+###########################
+
+# Cannot have a lapse following a heavy syllable
+
+define NoLapseFollowingHeavy ~[$[Heavy W2]];
+
+# push NoLapseFollowingHeavy;
+# down W[L]W[L]S[H];
+# down W[L]W[L]S[H]W[L];
+# down S[H]W[L]W[L];
+# down S[H]W[L]W[L]W[L];
+# down S[H]W[L]S[L]W[L]W[L];
+# down S[H]W[L]S[H]W[L]W[L];
+
+###########################
+#### Nonfinality-Light #########
+###########################
+
+define NonfinalityL ~[?* \"W" Light];
+
+#define Nonfinality [?* Weak];
+
+# # Try:
+# push NonfinalityL;
+# down S[H]W[L]S[H]P[H];
+# down W[L]S[H]W[L]P[L];
+# down S[H]W[L]S[H]S[H];
+# down W[L]S[H]W[L]S[L];
+
+###########################
+#### NoInitWS #########
+###########################
+
+define NoInitWS ~["W" Light "S" Light ?*];
+
+# # Try:
+# push NoInitWS;
+# down S[H]W[L]S[H]P[H];
+# down W[L]S[H]W[L]P[L];
+# down S[H]W[L]S[H]S[H];
+# down W[L]S[H]W[L]S[L];
+# down W[L]S[L]W[L]S[L];
+# down W[L]P[L]W[L];
+
+############################################
+####  NULL OUTPUTS ###
+############################################
+
+define SNullLoneL [ [? Light] -> {Null} || .#. _ .#. ];
+define SNullFinHL [ [?* Heavy ? Light ] ->@ {Null} || _ .#. ];
+
+# define Test [ Gen .O. SNullFinHL ];
+# push Test;
+# down HL;
+# down HHHL;
+# down HLHL;
+
+# define Test [ Gen .O. SNullLoneL ];
+# push Test;
+# down L;
+# down LL;
+# down LLL
+
+####################################
+####################################
+#### DEFINE LENIENT COMPOSITION ####
+####################################
+####################################
+
+
+############################################
+####  COMPOSITION OF GEN AND CONSTRAINTS ###
+############################################
+
+# > Results so far:
+# > 
+# >   Stratum 1 (already ranked):  WSP
+# >                                NonfinalityL
+# >                                NoLapseFollowingHeavy
+# >                                NoInitWS
+# >   Stratum 2 (already ranked):  Align(x2,R)
+# >   Stratum 3 (already ranked):  *Clash
+# >   Stratum 4 (already ranked):  *Lapse
+# >   Stratum 5 (newly ranked):    Align(x1,L)
+
+
+define LSmo [ Gen .O. SNullFinHL .O. SNullLoneL .O. Culminativity .O. WSP .O. NonfinalityL .O. NoLapseFollowingHeavy .O. NoInitWS .O. Alignx2R0 .O. Alignx2R1 .O. Alignx2R2 .O. Alignx2R3 .O. Alignx2R4 .O. Alignx2R5 .O. Alignx2R6 .O. Alignx2R7 .O. No1Clash .O. No2Clash .O. No3Clash .O. No4Clash .O. No1Lapse .O. No2Lapse .O. No3Lapse .O. No4Lapse .O. Alignx1Lg1 .O. Alignx1Lg2 .O. Alignx1Lg3 .O. Alignx1Lg4 .O. Alignx1Lg5 .O. Alignx1Lg6 .O. Alignx1Lg7 .O. Alignx1Lg8 .O. Alignx1Lg9 ]; 
+
+
+# # Try:
+# push LSmo;
+# down "L"
+# down "H";
+# down "HL";
+# down "LL";
+# down "LH";
+# down "HH";
+
+# down "HHH";
+# down "HLH";
+# down "HHL";
+# down "LLL";
+# down "LLH";
+# down "LHL";
+
+######################
+######################
+#### TEST GRAMMAR ####
+######################
+######################
+
+echo << Testing expressiveness of grammar >> 
+
+source ../auxiliary/test-overgen.xfst
+
+read text < ../auxiliary/gold-output5-unfooted.txt;
+
+source ../auxiliary/test-undergen.xfst

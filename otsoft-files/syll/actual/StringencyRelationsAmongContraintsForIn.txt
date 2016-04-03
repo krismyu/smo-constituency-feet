@@ -1,0 +1,7 @@
+The following constraints show a stringency relationship -- not necessarily a logical one, but in the data given.
+
+NoLapseFollowingHeavy	 has a strict subset of the violations of 	*Lapse
+*Clash	 has a strict subset of the violations of 	Align(x1,L)
+NonfinalityL	 has a strict subset of the violations of 	Align(x1,L)
+NoInitWS	 has a strict subset of the violations of 	Align(x1,L)
+

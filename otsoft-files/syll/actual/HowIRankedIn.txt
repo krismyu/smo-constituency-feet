@@ -1,0 +1,121 @@
+******Application of Constraint Demotion******
+
+Input file:  C:\Users\Kristine\Desktop\OTSoft2.4\OTSoft2.4/FilesForIn\In.txt
+
+
+******Now doing Stratum #1******
+
+  Align(x2,R) is excluded from stratum; prefers loser *[i(goA)] for /igoa/.
+  Align(x1,L) is excluded from stratum; prefers loser *[(Igo)a] for /igoa/.
+  *Clash is excluded from stratum; prefers loser *[le:mU:] for /le:mu:/.
+  *Lapse is excluded from stratum; prefers loser *[te(mOka)(lAsi)] for /temokalasi/.
+
+  WSP favors no losers, joins new stratum.
+  NonfinalityL favors no losers, joins new stratum.
+  NoLapseFollowingHeavy favors no losers, joins new stratum.
+  NoInitWS favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (newly ranked):    WSP
+                               NonfinalityL
+                               NoLapseFollowingHeavy
+                               NoInitWS
+
+  Markedness constraints still unranked:
+    *Lapse
+    *Clash
+    Align(x2,R)
+    Align(x1,L)
+  Faithfulness constraints still unranked:
+    (none)
+
+******Now doing Stratum #2******
+
+  Align(x1,L) is excluded from stratum; prefers loser *[(Igo)a] for /igoa/.
+  *Lapse is excluded from stratum; prefers loser *[tEmOkalAsi] for /temokalasi/.
+  *Clash is excluded from stratum; prefers loser *[S[H]W[L]P[L]W[L]W[L]] for /HLLLL/.
+
+  Align(x2,R) favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (already ranked):  WSP
+                               NonfinalityL
+                               NoLapseFollowingHeavy
+                               NoInitWS
+  Stratum 2 (newly ranked):    Align(x2,R)
+
+  Markedness constraints still unranked:
+    *Lapse
+    *Clash
+    Align(x1,L)
+  Faithfulness constraints still unranked:
+    (none)
+
+******Now doing Stratum #3******
+
+  *Lapse is excluded from stratum; prefers loser *[tEmOkalAsi] for /temokalasi/.
+  Align(x1,L) is excluded from stratum; prefers loser *[S[L]W[L]W[L]W[L]P[H]] for /LLLLH/.
+
+  *Clash favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (already ranked):  WSP
+                               NonfinalityL
+                               NoLapseFollowingHeavy
+                               NoInitWS
+  Stratum 2 (already ranked):  Align(x2,R)
+  Stratum 3 (newly ranked):    *Clash
+
+  Markedness constraints still unranked:
+    *Lapse
+    Align(x1,L)
+  Faithfulness constraints still unranked:
+    (none)
+
+******Now doing Stratum #4******
+
+  Align(x1,L) is excluded from stratum; prefers loser *[S[L]W[L]W[L]W[L]P[H]] for /LLLLH/.
+
+  *Lapse favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (already ranked):  WSP
+                               NonfinalityL
+                               NoLapseFollowingHeavy
+                               NoInitWS
+  Stratum 2 (already ranked):  Align(x2,R)
+  Stratum 3 (already ranked):  *Clash
+  Stratum 4 (newly ranked):    *Lapse
+
+  Markedness constraints still unranked:
+    Align(x1,L)
+  Faithfulness constraints still unranked:
+    (none)
+
+******Now doing Stratum #5******
+
+  Search found no unranked constraints that prefer losers.
+
+  Align(x1,L) favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (already ranked):  WSP
+                               NonfinalityL
+                               NoLapseFollowingHeavy
+                               NoInitWS
+  Stratum 2 (already ranked):  Align(x2,R)
+  Stratum 3 (already ranked):  *Clash
+  Stratum 4 (already ranked):  *Lapse
+  Stratum 5 (newly ranked):    Align(x1,L)
+
+  Markedness constraints still unranked:
+    (none)
+  Faithfulness constraints still unranked:
+    (none)
+
+Ranking is complete and yields successful grammar.

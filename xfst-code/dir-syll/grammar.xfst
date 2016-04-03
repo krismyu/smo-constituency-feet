@@ -1,0 +1,305 @@
+# DIR-SYLL: GRAMMAR.XFST
+# XFST Code for Samoan primary stress in monomorphemes, using syllables, direct approach
+# Time-stamp: <2016-03-18 14:42:28 amoebe>
+
+
+######################
+###### INPUT #########
+######################
+
+# Run input file to generate all possible stress patterns over heavy
+# and light syllables (P=primary, S=secondary, W = unstressed)
+
+echo << Generating language of input strings >> 
+
+source ../auxiliary/gen.xfst
+
+######################################
+###### RESTRICTIONS ON STRESS PATTERNS
+######################################
+
+# Define some auxiliary terms for clarity
+
+define Heavy [ "[" "H" "]" ];
+define Light [ "[" "L" "]" ];
+define WeakLight ["W" Light];
+define PrimaryLight ["P" Light];
+define SecondaryLight ["S" Light];
+define StressedSyll [ \"W" [ Heavy | Light ] ];
+
+# Allow only strings containing exactly one P
+
+
+##########################
+###### Culminativity #####
+##########################
+
+define Culminativity [ $.P ];
+
+###############################################
+### Restrict heavy syllables to be stressed ###
+###############################################
+
+# Heavy syllables may either be preceded by S _, or appear with P _ .#.
+# Do I need to specify that S _ ?  It seems to work without; indeed it
+# does, R context compiled as [R ?*]
+
+#define StressHeavy [ Heavy => "P" _ .#., "S"  _ ?];
+define StressHeavy [ Heavy => "P" _ .#., "S"  _ ];
+
+# Test:
+# push StressHeavy;
+# down "P[H]";
+# down "S[H]";
+# down "S[H]P[H]";
+# down "P[H]P[H]";
+
+
+###############################
+### Restrict primary lights ###
+###############################
+
+# If the final syllable is light, main stress falls on the penult.
+
+define StressPLight [ PrimaryLight =>  _ WeakLight .#. ];
+
+# prevents lone P[L]
+
+# The ? at the end of the right context is to forbid ...S[L]W[L]#,
+#since only P[L] can go before W[L]#
+
+
+
+#################################
+### Restrict secondary lights ###
+#################################
+
+# If there are three initial light syllables, the first gets
+# secondary stressed, and the other two are unstressed (initial
+# dactyl effect), so there is a lapse over the second and third syllables.   
+
+# Secondary light must always by followed by a non-final weak light
+# and must either be string-initial, or preceded by a weak light or a
+# heavy syllable.
+
+define W2 [WeakLight WeakLight];
+
+#define StressSLight [ SecondaryLight => [.#. | WeakLight | Heavy] _ WeakLight ? ];
+
+define StressSLight [ SecondaryLight => [.#. | W2 | [StressedSyll WeakLight] | Heavy] _ WeakLight ? ];
+
+
+# Prevents lone S[L];
+
+# # Try:
+# push StressSLight;
+
+# # must be followed by non-final weak light
+# down "S[L]W[L]";
+# down "S[L]W[L]P[H]";
+
+# # must be string-initial, preceded by weak light, or by heavy
+# down "W[L]S[L]W[L]P[H]";
+# down "S[L]W[L]P[H]";
+# down "S[H]S[L]W[L]P[H]";
+# down "S[L]W[L]W[L]P[L]W[L]";
+
+# # should pass this HLLLH, so S[L] can appear after W[L], but only if W[L] is preceded by S[L] or S[H]
+# down "S[H]W[L]S[L]W[L]P[H]";
+
+# down "S[H]S[L]W[L][L]P[H]";
+
+
+# preceded by weak light if preceded by lapse
+# down "W[L]S[L]W[L]P[H]";
+# down "W[L]W[L]S[L]W[L]P[H]";
+
+
+
+
+# down "S[L]S[L]W[L]P[H]";
+# down "P[L]S[L]W[L]P[H]";
+
+# define Test Gen .o. StressHeavy .o. StressPLight .o.  StressSLight;
+# push Test;
+# down LL;
+# down LLL;
+
+# P[L]W[L]
+# W[L]W[L]
+
+# Need further restrictions on light 
+
+define RestrictWeakLight [ WeakLight =>  .#. _ [ [PrimaryLight WeakLight] | [? Heavy] ], StressedSyll _ , [SecondaryLight WeakLight]  _ StressedSyll ] ;
+
+# # Test:
+# push RestrictWeakLight;
+
+# # Case 1a: initial in #LP[L]W[L]# 
+# down W[L]P[L]W[L];
+
+# # but
+# down W[L]P[L]W[L]S[H];
+
+# # Case 1b: initial, followed by a (stressed) heavy syllable (since in
+# transduction, we've made all heavies stressed, we can just say heavy;
+# anything else may follow the heavy (it's not necessarily terminal)
+
+# down W[L]S[H];
+
+# # but
+# down W[L]S[W];
+
+# down W[L]S[H]W[L];
+# down W[L]S[H]P[H];
+
+# # allows HL words, but not L
+# down P[H]W[L];
+
+
+# down S[L]W[L]P[H]W[L];
+# down W[L]S[H]P[H];
+
+
+# # no
+# down W[L]P[L];
+
+# down W[L]S[H];
+# down W[L]P[H];
+# down W[L]P[H]S[H];
+# down W[L]S[H]P[H];
+# down W[L]S[H]P[L]P[H];
+# down W[L]S[H]W[L]P[H];
+
+# # Case 2: preceded by a stressed syllable:
+
+# down P[L]W[L];
+# down W[L];
+# down S[H]W[L]P[H];
+# down S[H]W[L]P[L];
+
+# # oops last one shouldn't pass, but eliminated by StressPLight
+
+# down S[H]W[L]P[H]W[L];
+
+# # this last one is eliminated by StressHeavy
+
+# down S[H]W[L]W[L];
+
+
+# # Case 3: preceded by S[L]W[L] and followed by a stressed syllable
+
+# # Samoan vs. Fijian minisita:
+# down S[L]W[L]W[L]P[H]; 
+# down W[L]S[L]W[L]P[H];
+
+# # Samon vs. Fijian temokalasi
+# down S[L]W[L]W[L]P[L]W[L]; 
+# down W[L]S[L]W[L]P[L]W[L];
+
+# # 6 mora words 
+# down W[L]W[L]W[L]W[L]P[L]W[L];
+# down W[L]W[L]S[L]W[L]P[L]W[L];
+# down W[L]S[L]W[L]W[L]P[L]W[L];
+# down S[L]W[L]W[L]W[L]P[L]W[L];
+# down S[L]W[L]S[L]W[L]P[L]W[L];
+
+# # LSMo vs. Samoan 7L Afghanistan
+# down S[L]W[L]W[L]S[L]W[L]P[L]W[L]; 
+# down W[L]S[L]W[L]S[L]W[L]P[L]W[L]; 
+
+
+
+#######################
+### Restrict lapses ###
+#######################
+
+# Restrict lapses to be preceded by secondary stress light and
+#followed by stressed syllable
+
+define RestrictLapse [ W2 =>  SecondaryLight _ StressedSyll ];
+
+
+# push RestrictLapse;
+
+# # yes
+# down S[H]W[L]S[L]W[L]P[H];
+# down S[H]S[L]W[L]W[L]P[H];
+# down S[L]S[L]W[L]P[H];
+
+# #no
+# down S[H]W[L]W[L]W[L]P[H];
+# down S[L]W[L]W[L];
+# down S[H]W[L]W[L]P[H];
+
+# # 5L
+# down S[L]W[L]W[L]P[L]W[L];
+
+# # 7Ls
+# down S[L]W[L]W[L]S[L]W[L]P[L]W[L] ;
+# down S[L]W[L]S[L]W[L]W[L]P[L]W[L] ;
+
+# # Problem:
+# # xfst[37]: down HLLH;
+# # S[H]W[L]W[L]P[H]
+# # maybe because of [? Heavy ] ?
+
+# # Problem 2: 7L
+
+# S[L]W[L]W[L]S[L]W[L]P[L]W[L] # yes
+# S[L]W[L]S[L]W[L]W[L]P[L]W[L] # yes
+
+#############################################
+### Bans on HL-final sequences and lone L ###
+#############################################
+
+# We still have a problem: HL final sequences are still admitted, so
+# let's just ban them, same with lone lights
+
+define NoFinHL ~[?* ? Heavy ? Light];
+define NoLoneL ~[Light] ;
+
+################################
+###### FINAL TRANSDUCTION ######
+################################
+
+define LSmo [ Gen .o. Culminativity .o. [ StressHeavy & StressPLight & StressSLight & RestrictLapse ] .o. NoFinHL .o. NoLoneL];
+
+# check by hand
+
+# push LSmo;
+# # One syllable
+# down L;
+# down H;
+
+# # Two syllables
+# down LL;
+# down LH;
+# down HH;
+# down HL; 
+
+# # Three syllables
+# down LLL;
+# down LLH;
+# down LHL; 
+# down HLL;
+# down LHH;
+# down HLH;
+# down HHL; 
+# down HHH;
+
+######################
+######################
+#### TEST GRAMMAR ####
+######################
+######################
+
+
+echo << Testing expressiveness of grammar >> 
+
+source ../auxiliary/test-overgen.xfst
+
+read text < ../auxiliary/gold-output5-unfooted.txt;
+
+source ../auxiliary/test-undergen.xfst
+

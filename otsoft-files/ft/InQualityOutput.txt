@@ -1,0 +1,182 @@
+\ti\ftResults of Applying Recursive Constraint Demotion to In.txt
+
+\hrRankings for In.txt	3-05-2016	\pn
+
+\cn3-05-2016, 3:50 p.m.
+
+\cnOTSoft 2.4
+\cnRelease date 1/19/2016
+
+
+\h1Result
+A ranking was found that generates the correct outputs.
+\ks
+\ts3
+\ntStratum	Constraint Name	Abbreviation
+Stratum #1	FtBin	FtBin
+	Trochee	Trochee
+	Align(PWd,R;Foot,R)	Edgemost-R
+Stratum #2	Parse-syll	Parse-syll
+	Align(PWd,L;Ft,L)	Align(PWd,L;Ft,L)
+\te\ke
+
+\h1Tableaux
+\ts6\ks
+/igoa/	\wsF\wei(gOa)	(Igo)a	i(goA)	(Igo)(A)	igo(A)
+FtBin				*!
+	*!
+
+\hdTrochee			*!
+	\sh	\sh
+\hdEdgemost-R		*!
+	\sh	\sh	\sh
+Parse-syll	*
+\sh	*
+\sh	*
+\sh	\sh	**
+\sh
+\hdAlign(PWd,L;Ft,L)	*
+\sh	\sh	*
+\sh	\sh	*
+\sh
+\ke\te
+\ts3\ks
+/temokalasi/	\wsF\we(tEmo)ka(lAsi)	te(mOka)(lAsi)
+FtBin		
+\hdTrochee		
+\hdEdgemost-R		
+Parse-syll	*
+	*
+
+\hdAlign(PWd,L;Ft,L)		*!
+
+\ke\te
+\ts3\ks
+/palanikeke/	\wsF\we(pAla)ni(kEke)	pa(lAni)(kEke)
+FtBin		
+\hdTrochee		
+\hdEdgemost-R		
+Parse-syll	*
+	*
+
+\hdAlign(PWd,L;Ft,L)		*!
+
+\ke\te
+\ts4\ks
+/sikalamu/	\wsF\we(sIka)(lAmu)	sika(lAmu)	si(kAla)mu
+FtBin			
+\hdTrochee			
+\hdEdgemost-R			*!
+
+Parse-syll		*!*
+	**
+\sh
+\hdAlign(PWd,L;Ft,L)	\sh	*
+\sh	*
+\sh
+\ke\te
+\ts4\ks
+/pi:niki/	\wsF\we(pI:)(nIki)	pi:(nIki)	(pI:)niki
+FtBin			
+\hdTrochee			
+\hdEdgemost-R			*!
+
+Parse-syll		*!
+	**
+\sh
+\hdAlign(PWd,L;Ft,L)	\sh	*
+\sh	\sh
+\ke\te
+
+\h1Status of Proposed Constraints:  Necessary or Unnecessary
+\ts2
+\ntConstraint	Status
+FtBin	Necessary
+Trochee	Necessary
+Align(PWd,R;Foot,R)	Necessary
+Align(PWd,L;Ft,L)	Necessary
+Parse-syll	Not necessary
+\te
+\ks
+
+\h1Ranking Arguments, based on the Fusional Reduction Algorithm
+This run sought to obtain the Skeletal Basis, intended to keep each final ranking argument as pithy as possible.
+\ke
+Original set of ERCs
+\ks
+\ts3
+\ntIndex	ERC	Reason
+1	WeeLL	for /igoa/, i(gOa) >> (Igo)(A)
+2	eeWeL	for /igoa/, i(gOa) >> (Igo)a
+\te\ke
+Recursive ranking search
+
+Recursive search has now reached this location in the search tree:  1
+
+	Fusion of this ERC set is:  
+		WEWLL
+   The following ERCs form the total information-loss residue:
+		WEELL
+		EEWEL
+
+	Fusion of total residue:
+		WEWLL
+
+	Skeletal basis of the fusion:
+		WEWEE
+
+	WeWee has no L's, so it cannot be retained in the Skeletal Basis.
+
+Recursive search has now reached this location in the search tree:  1, 1
+Current set of ERCs is based on constraint #1, FtBin
+Working with the following ERC set:
+		EEWEL
+
+	Fusion of this ERC set is:  
+		EEWEL
+   The following ERCs form the total information-loss residue:
+
+
+	EEWEL has a null residue and thus may be retained in the Skeletal Basis of ERCs.
+
+Recursive search has now reached this location in the search tree:  1, 3
+Current set of ERCs is based on constraint #3, Edgemost-R
+Working with the following ERC set:
+		WEELL
+
+	Fusion of this ERC set is:  
+		WEELL
+   The following ERCs form the total information-loss residue:
+
+
+	WEELL has a null residue and thus may be retained in the Skeletal Basis of ERCs.
+
+\h1Ranking argumentation:  Final result
+The following set of ERCs forms the Skeletal Basis for the ERC set as a whole, and thus encapsulates the available ranking information.
+	EEWEL
+	WEELL
+The final rankings obtained are as follows:
+	Edgemost-R >> Align(PWd,L;Ft,L)
+	FtBin >> { Parse-syll, Align(PWd,L;Ft,L) }
+
+\h1Mini-Tableaux
+The following small tableaux may be useful in presenting ranking arguments. They include all winner-rival comparisons in which there is just one winner-preferring constraint and at least one loser-preferring constraint.  Constraints not violated by either candidate are omitted.
+\ts3\ks
+/igoa/	\wsF\wei(gOa)	(Igo)(A)
+FtBin		* 
+
+Parse-syll	*
+	
+\hdAlign(PWd,L;Ft,L)	*
+	
+\ke\te
+\ts3\ks
+/igoa/	\wsF\wei(gOa)	(Igo)a
+Edgemost-R		* 
+
+Parse-syll	*
+	*
+
+\hdAlign(PWd,L;Ft,L)	*
+	
+\ke\te

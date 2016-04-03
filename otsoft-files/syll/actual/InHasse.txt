@@ -1,0 +1,17 @@
+digraph G {
+   1 [label="*Lapse",fontsize = 14]
+   2 [label="*Clash",fontsize = 14]
+   3 [label="Align(x2,R)",fontsize = 14]
+   4 [label="Align(x1,L)",fontsize = 14]
+   5 [label="WSP",fontsize = 14]
+   6 [label="NonfinalityL",fontsize = 14]
+   7 [label="NoLapseFollowingHeavy",fontsize = 14]
+   8 [label="NoInitWS",fontsize = 14]
+   1 -> 4 [fontsize = 11]
+   2 -> 1 [fontsize = 11]
+   3 -> 2 [fontsize = 11]
+   5 -> 2 [fontsize = 11]
+   6 -> 3 [fontsize = 11]
+   7 -> 2 [fontsize = 11]
+   8 -> 1 [fontsize = 11]
+}

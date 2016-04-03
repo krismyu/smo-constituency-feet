@@ -1,0 +1,17 @@
+# TEST-OVERGEN.XFST
+# Time-stamp: <2016-03-18 14:18:27 amoebe>
+# XFST Code for testing the expressiveness of grammar and comparing to
+# gold standard output.
+# Prepare test for overgeneration: compute outputs of all possible
+# inputs up to 5 syllables
+
+## Let's compose all of the possible inputs up to 5 syll with the transducer to see what happens
+
+read text  < ../auxiliary/input5.txt;
+define Inputs5;
+
+define GenInputs5 Inputs5 .o. LSmo;
+push GenInputs5;
+lower-side;
+
+write text > chk-overgen.txt;

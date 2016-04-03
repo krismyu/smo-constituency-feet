@@ -1,0 +1,61 @@
+			*Lapse	*Clash	Align(x2,R)	Align(x1,L)	WSP	NonfinalityL	NoLapseFollowingHeavy	NoInitWS
+			*Lapse	*Clash	Align(x2,R)	Align(x1,L)	WSP	NonfinalityL	NoLapseFollowingHeavy	NoInitWS
+igoa	i(gOa)	 1 			 1 	 1 				
+	i(goA)		 1 			 2 		 1 		
+	igo(A)		 1 			 2 		 1 		
+	(Igo)(A)					 2 		 1 		
+	(Igo)a		 1 		 2 					
+lava:	lavA:	 1 				 1 				
+	lAva:				 1 		 1 			
+	lAvA:			 1 		 1 				
+talie:	tAliE:	 1 				 2 				
+	talIE:			 1 		 3 				 1 
+	tAlie:		 1 		 2 		 1 			
+	taliE:		 1 			 2 				
+le:mu:	lE:mU:	 1 		 1 		 1 				
+	le:mU:					 1 	 1 			
+	lE:mu:				 1 		 1 			
+temokalasi	(tEmo)ka(lAsi)	 1 	 1 		 1 	 3 				
+	(tEmo)ka(lAsi)Pleft		 1 		 4 	 3 				
+	te(mOka)(lAsi)				 1 	 4 				 1 
+	temOkalasI		 1 			 5 		 1 		 1 
+	tEmokAlasi		 1 		 2 	 2 				
+	tEmokAlasI					 6 		 1 		
+	temOkAlasI			 1 		 7 		 1 		 1 
+	tEmOkalAsi			 1 	 1 	 4 				
+palanikeke	(pAla)ni(kEke)	 1 	 1 		 1 	 3 				
+	pa(lAni)(kEke)				 1 	 4 				 1 
+sikalamu	(sIka)(lAmu)	 1 			 1 	 2 				
+	sika(lAmu)		 1 		 1 	 2 				
+	si(kAla)mu		 1 		 2 	 1 				 1 
+	(sikA)(lAmu)			 1 	 1 	 3 				 1 
+	(sIka)(lAmu)Pleft				 3 	 2 				
+pi:niki	(pI:)(nIki)	 1 		 1 	 1 	 1 				
+	(pI:)(nIki)Pleft			 1 	 2 	 1 				
+	pi:(nIki)				 1 	 1 	 1 			
+	(pI:)niki		 1 		 2 				 1 	
+LLLH	S[L]W[L]W[L]P[H]	 1 	 1 			 3 				
+	S[L]S[L]W[L]P[H]			 1 		 4 				
+	W[L]S[L]W[L]P[H]					 4 				 1 
+HLLH	S[H]S[L]W[L]P[H]	 1 		 1 		 4 				
+	S[H]W[L]S[L]P[H]			 1 		 5 				
+LLLLH	S[L]W[L]S[L]W[L]P[H]	 1 				 6 				
+	S[L]W[L]W[L]W[L]P[H]		 2 			 4 				
+	W[L]S[L]W[L]W[L]P[H]		 1 			 5 				 1 
+HLLLL	S[H]S[L]W[L]P[L]W[L]	 1 		 1 	 1 	 4 				
+	S[H]W[L]S[L]W[L]P[L]					 3 		 1 		
+	S[H]W[L]W[L]P[L]W[L]		 1 		 1 	 3 			 1 	
+	S[H]W[L]P[L]W[L]W[L]		 1 		 2 	 2 				
+LHLLH	W[L]S[H]S[L]W[L]P[H]	 1 		 1 		 7 				
+	W[L]S[H]W[L]S[L]P[H]			 1 		 8 				
+	W[L]S[H]W[L]W[L]P[H]		 1 			 5 			 1 	
+HLLLH	S[H]W[L]S[L]W[L]P[H]	 1 				 6 				
+	S[H]W[L]W[L]W[L]P[H]		 2 			 4 				
+HHLLH	S[H]S[H]S[L]W[L]P[H]	 1 		 2 		 7 				
+	S[H]S[H]W[L]S[L]P[H]			 2 		 8 				
+	S[H]S[H]W[L]W[L]P[H]		 1 	 1 		 5 			 1 	
+HLLHH	S[H]S[L]W[L]S[H]P[H]	 1 		 2 		 8 				
+	S[H]W[L]S[L]S[H]P[H]			 2 		 9 				
+	S[H]W[L]W[L]S[H]P[H]		 1 	 1 		 7 			 1 	
+LLLLLLL	S[L]W[L]W[L]S[L]W[L]P[L]W[L]	 1 	 1 		 1 	 8 				
+	S[L]W[L]W[L]W[L]W[L]P[L]W[L]		 3 		 1 	 5 				

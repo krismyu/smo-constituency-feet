@@ -1,0 +1,187 @@
+******Application of Constraint Demotion******
+
+Input file:  C:\Users\Kristine\Desktop\OTSoft2.4\OTSoft2.4/FilesForIn\In.txt
+
+
+******Now doing Stratum #1******
+
+  Align(x2,R) is excluded from stratum; prefers loser *[i(goA)] for /igoa/.
+  Align(x1,R) is excluded from stratum; prefers loser *[i(goA)] for /igoa/.
+  Align(PWd,x2R) is excluded from stratum; prefers loser *[i(goA)] for /igoa/.
+  Align(PWd,x1,L is excluded from stratum; prefers loser *[(Igo)(A)] for /igoa/.
+  Align(x2,L) is excluded from stratum; prefers loser *[(Igo)a] for /igoa/.
+  Align(x1,L) is excluded from stratum; prefers loser *[(Igo)a] for /igoa/.
+  InitialGridMark is excluded from stratum; prefers loser *[talIE:] for /talie:/.
+  SWP is excluded from stratum; prefers loser *[taliE:] for /talie:/.
+  *Clash is excluded from stratum; prefers loser *[le:mU:] for /le:mu:/.
+  ClashAtLeftEdge is excluded from stratum; prefers loser *[le:mU:] for /le:mu:/.
+  NoClashAtPeak is excluded from stratum; prefers loser *[le:mU:] for /le:mu:/.
+  *Lapse is excluded from stratum; prefers loser *[te(mOka)(lAsi)] for /temokalasi/.
+  LapseAtEnd is excluded from stratum; prefers loser *[te(mOka)(lAsi)] for /temokalasi/.
+  *LapseInTrough is excluded from stratum; prefers loser *[te(mOka)(lAsi)] for /temokalasi/.
+
+  WSP favors no losers, joins new stratum.
+  NonfinalityL favors no losers, joins new stratum.
+  NoExtendedLapse favors no losers, joins new stratum.
+  NoLapseFollowingHeavy favors no losers, joins new stratum.
+  NoInitWS favors no losers, joins new stratum.
+  NoInitialLapse favors no losers, joins new stratum.
+  LapseAtPeak favors no losers, joins new stratum.
+  NoFinalLongLapse favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (newly ranked):    WSP
+                               NonfinalityL
+                               NoExtendedLapse
+                               NoLapseFollowingHeavy
+                               NoInitWS
+                               NoInitialLapse
+                               LapseAtPeak
+                               NoFinalLongLapse
+
+  Markedness constraints still unranked:
+    *Lapse
+    *Clash
+    Align(x2,R)
+    Align(x2,L)
+    Align(x1,L)
+    Align(x1,R)
+    SWP
+    InitialGridMark
+    LapseAtEnd
+    *LapseInTrough
+    Align(PWd,x2R)
+    Align(PWd,x1,L
+    ClashAtLeftEdge
+    NoClashAtPeak
+  Faithfulness constraints still unranked:
+    (none)
+
+******Now doing Stratum #2******
+
+  Align(x2,L) is excluded from stratum; prefers loser *[(Igo)a] for /igoa/.
+  Align(x1,L) is excluded from stratum; prefers loser *[(Igo)a] for /igoa/.
+  Align(PWd,x1,L is excluded from stratum; prefers loser *[(Igo)a] for /igoa/.
+  LapseAtEnd is excluded from stratum; prefers loser *[tEmokAlasi] for /temokalasi/.
+  *LapseInTrough is excluded from stratum; prefers loser *[tEmokAlasi] for /temokalasi/.
+  ClashAtLeftEdge is excluded from stratum; prefers loser *[S[H]W[L]S[L]P[H]] for /HLLH/.
+  *Clash is excluded from stratum; prefers loser *[S[H]W[L]P[L]W[L]W[L]] for /HLLLL/.
+  Align(x1,R) is excluded from stratum; prefers loser *[S[H]W[L]P[L]W[L]W[L]] for /HLLLL/.
+  SWP is excluded from stratum; prefers loser *[S[H]W[L]P[L]W[L]W[L]] for /HLLLL/.
+
+  *Lapse favors no losers, joins new stratum.
+  Align(x2,R) favors no losers, joins new stratum.
+  InitialGridMark favors no losers, joins new stratum.
+  Align(PWd,x2R) favors no losers, joins new stratum.
+  NoClashAtPeak favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (already ranked):  WSP
+                               NonfinalityL
+                               NoExtendedLapse
+                               NoLapseFollowingHeavy
+                               NoInitWS
+                               NoInitialLapse
+                               LapseAtPeak
+                               NoFinalLongLapse
+  Stratum 2 (newly ranked):    *Lapse
+                               Align(x2,R)
+                               InitialGridMark
+                               Align(PWd,x2R)
+                               NoClashAtPeak
+
+  Markedness constraints still unranked:
+    *Clash
+    Align(x2,L)
+    Align(x1,L)
+    Align(x1,R)
+    SWP
+    LapseAtEnd
+    *LapseInTrough
+    Align(PWd,x1,L
+    ClashAtLeftEdge
+  Faithfulness constraints still unranked:
+    (none)
+
+******Now doing Stratum #3******
+
+  ClashAtLeftEdge is excluded from stratum; prefers loser *[S[H]W[L]S[L]P[H]] for /HLLH/.
+  Align(x1,R) is excluded from stratum; prefers loser *[S[H]W[L]S[L]S[H]P[H]] for /HLLHH/.
+
+  *Clash favors no losers, joins new stratum.
+  Align(x2,L) favors no losers, joins new stratum.
+  Align(x1,L) favors no losers, joins new stratum.
+  SWP favors no losers, joins new stratum.
+  LapseAtEnd favors no losers, joins new stratum.
+  *LapseInTrough favors no losers, joins new stratum.
+  Align(PWd,x1,L favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (already ranked):  WSP
+                               NonfinalityL
+                               NoExtendedLapse
+                               NoLapseFollowingHeavy
+                               NoInitWS
+                               NoInitialLapse
+                               LapseAtPeak
+                               NoFinalLongLapse
+  Stratum 2 (already ranked):  *Lapse
+                               Align(x2,R)
+                               InitialGridMark
+                               Align(PWd,x2R)
+                               NoClashAtPeak
+  Stratum 3 (newly ranked):    *Clash
+                               Align(x2,L)
+                               Align(x1,L)
+                               SWP
+                               LapseAtEnd
+                               *LapseInTrough
+                               Align(PWd,x1,L
+
+  Markedness constraints still unranked:
+    Align(x1,R)
+    ClashAtLeftEdge
+  Faithfulness constraints still unranked:
+    (none)
+
+******Now doing Stratum #4******
+
+  Search found no unranked constraints that prefer losers.
+
+  Align(x1,R) favors no losers, joins new stratum.
+  ClashAtLeftEdge favors no losers, joins new stratum.
+
+Results so far:
+
+  Stratum 1 (already ranked):  WSP
+                               NonfinalityL
+                               NoExtendedLapse
+                               NoLapseFollowingHeavy
+                               NoInitWS
+                               NoInitialLapse
+                               LapseAtPeak
+                               NoFinalLongLapse
+  Stratum 2 (already ranked):  *Lapse
+                               Align(x2,R)
+                               InitialGridMark
+                               Align(PWd,x2R)
+                               NoClashAtPeak
+  Stratum 3 (already ranked):  *Clash
+                               Align(x2,L)
+                               Align(x1,L)
+                               SWP
+                               LapseAtEnd
+                               *LapseInTrough
+                               Align(PWd,x1,L
+  Stratum 4 (newly ranked):    Align(x1,R)
+                               ClashAtLeftEdge
+
+  Markedness constraints still unranked:
+    (none)
+  Faithfulness constraints still unranked:
+    (none)
+
+Ranking is complete and yields successful grammar.

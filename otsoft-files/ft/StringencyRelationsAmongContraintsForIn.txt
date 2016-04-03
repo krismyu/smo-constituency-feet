@@ -1,0 +1,7 @@
+The following constraints show a stringency relationship -- not necessarily a logical one, but in the data given.
+
+Trochee	 has a strict subset of the violations of 	Parse-syll
+Trochee	 has a strict subset of the violations of 	Align(PWd,L;Ft,L)
+Edgemost-R	 has a strict subset of the violations of 	Parse-syll
+Align(PWd,L;Ft,L)	 has a strict subset of the violations of 	Parse-syll
+

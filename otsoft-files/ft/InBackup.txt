@@ -1,0 +1,17 @@
+			FtBin	Trochee	Align(PWd,R;Foot,R)	Parse-syll	Align(PWd,L;Ft,L)
+			FtBin	Trochee	Edgemost-R	Parse-syll	Align(PWd,L;Ft,L)
+igoa	i(gOa)	 1 				 1 	 1 
+	i(goA)			 1 		 1 	 1 
+	igo(A)		 1 			 2 	 1 
+	(Igo)(A)		 1 				
+	(Igo)a				 1 	 1 	
+temokalasi	(tEmo)ka(lAsi)	 1 				 1 	
+	te(mOka)(lAsi)					 1 	 1 
+palanikeke	(pAla)ni(kEke)	 1 				 1 	
+	pa(lAni)(kEke)					 1 	 1 
+sikalamu	(sIka)(lAmu)	 1 					
+	sika(lAmu)					 2 	 1 
+	si(kAla)mu				 1 	 2 	 1 
+pi:niki	(pI:)(nIki)	 1 					
+	pi:(nIki)					 1 	 1 
+	(pI:)niki				 1 	 2 	

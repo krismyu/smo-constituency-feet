@@ -1,0 +1,57 @@
+			*Lapse	*Clash	Align(x2,R)	Align(x2,L)	Align(x1,L)	Align(x1,R)	WSP	SWP	NonfinalityL	InitialGridMark	NoExtendedLapse	NoLapseFollowingHeavy	NoInitWS	NoInitialLapse	LapseAtEnd	LapseAtPeak	NoFinalLongLapse	*LapseInTrough	Align(PWd,x2R)	Align(PWd,x1,L	ClashAtLeftEdge	NoClashAtPeak
+			*Lapse	*Clash	Align(x2,R)	Align(x2,L)	Align(x1,L)	Align(x1,R)	WSP	SWP	NonfinalityL	InitialGridMark	NoExtendedLapse	NoLapseFollowingHeavy	NoInitWS	NoInitialLapse	LapseAtEnd	LapseAtPeak	NoFinalLongLapse	*LapseInTrough	Align(PWd,x2R)	Align(PWd,x1,L	ClashAtLeftEdge	NoClashAtPeak
+igoa	i(gOa)	 1 			 1 	 1 	 1 	 1 		 1 											 1 	 1 		
+	i(goA)		 1 			 2 	 2 			 1 	 1 						 1 					 1 		
+	igo(A)		 1 			 2 	 2 			 1 	 1 						 1 					 1 		
+	(Igo)(A)					 2 	 2 	 2 		 2 	 1 	 1 												
+	(Igo)a		 1 		 2 			 2 		 1 		 1 									 1 			
+lava:	lavA:	 1 				 1 	 1 															 1 		
+	lAva:				 1 			 1 	 1 	 1 		 1 									 1 			
+	lAvA:			 1 		 1 	 1 	 1 		 1 		 1 												 1 
+talie:	tAliE:	 1 				 2 	 2 	 2 		 1 		 1 												
+	talIE:			 1 		 2 	 3 	 1 		 1 					 1 							 1 	 1 	 1 
+	tAlie:		 1 		 2 			 2 	 1 	 1 		 1 					 1 				 1 			
+	taliE:		 1 			 2 	 2 									 1 						 1 		
+le:mu:	lE:mU:	 1 		 1 		 1 	 1 	 1 				 1 											 1 	 1 
+	le:mU:					 1 	 1 		 1 													 1 		
+	lE:mu:				 1 			 1 	 1 			 1 									 1 			
+temokalasi	(tEmo)ka(lAsi)	 1 	 1 		 1 	 3 	 3 	 5 		 2 		 1 					 1 			 1 	 1 			
+	(tEmo)ka(lAsi)Pleft		 1 		 4 		 3 	 5 		 2 		 1 					 1 			 1 	 1 			
+	te(mOka)(lAsi)				 1 	 3 	 4 	 4 		 2 					 1 						 1 	 1 		
+	temOkalasI		 1 			 4 	 5 	 3 		 2 	 1 				 1 		 1 			 1 		 1 		
+	tEmokAlasi		 1 		 2 	 2 	 2 	 6 		 2 		 1 									 1 			
+	tEmokAlasI					 4 	 6 	 6 		 3 	 1 	 1 												
+	temOkAlasI			 1 		 4 	 7 	 5 		 3 	 1 				 1 							 1 	 1 	 1 
+palanikeke	(pAla)ni(kEke)	 1 	 1 		 1 	 3 	 3 	 5 		 2 		 1 					 1 			 1 	 1 			
+	pa(lAni)(kEke)				 1 	 3 	 4 	 4 		 2 					 1 						 1 	 1 		
+sikalamu	(sIka)(lAmu)	 1 			 1 	 2 	 2 	 4 		 2 		 1 									 1 			
+	sika(lAmu)		 1 		 1 	 2 	 2 	 1 		 1 						 1 	 1 				 1 	 1 		
+	si(kAla)mu		 1 		 2 	 1 	 1 	 2 		 1 					 1 		 1 				 1 	 1 		
+	(sikA)(lAmu)			 1 	 1 	 2 	 3 	 3 		 2 					 1 						 1 	 1 		 1 
+	(sIka)(lAmu)Pleft				 3 		 2 	 4 		 2 		 1 									 1 			
+pi:niki	(pI:)(nIki)	 1 		 1 	 1 	 1 	 1 	 3 		 1 		 1 									 1 		 1 	 1 
+	(pI:)(nIki)Pleft			 1 	 2 		 1 	 3 		 1 		 1 									 1 		 1 	 1 
+	pi:(nIki)				 1 	 1 	 1 	 1 	 1 	 1 											 1 	 1 		
+	(pI:)niki		 1 		 2 			 2 				 1 		 1 							 1 			
+HLLH	S[H]S[L]W[L]P[H]	 1 		 1 		 3 	 4 	 5 		 1 		 1 											 1 	
+	S[H]W[L]S[L]P[H]			 1 		 3 	 5 	 5 		 1 		 1 												
+LLLLH	S[L]W[L]S[L]W[L]P[H]	 1 				 4 	 6 	 6 		 2 		 1 												
+	S[L]W[L]W[L]W[L]P[H]		 2 			 4 	 4 	 4 		 1 		 1 	 1 				 2 							
+	W[L]S[L]W[L]W[L]P[H]		 1 			 4 	 5 	 3 		 1 					 1 		 1 					 1 		
+HLLLL	S[H]S[L]W[L]P[L]W[L]	 1 		 1 	 1 	 3 	 4 	 8 		 2 		 1 									 1 		 1 	
+	S[H]W[L]S[L]W[L]P[L]					 6 	 3 	 5 		 2 	 1 	 1 												
+	S[H]W[L]W[L]P[L]W[L]		 1 		 1 	 3 	 3 	 5 		 1 		 1 		 1 			 1 			 1 	 1 			
+	S[H]W[L]P[L]W[L]W[L]		 1 		 2 	 2 	 2 	 6 		 1 		 1 									 1 			
+LHLLH	W[L]S[H]S[L]W[L]P[H]	 1 		 1 		 4 	 7 	 5 		 1 												 1 		
+	W[L]S[H]W[L]S[L]P[H]			 1 		 4 	 8 	 4 		 1 												 1 		 1 
+	W[L]S[H]W[L]W[L]P[H]		 1 			 4 	 5 	 3 						 1 			 1 			 1 		 1 		
+HLLLH	S[H]W[L]S[L]W[L]P[H]	 1 				 4 	 6 	 6 		 1 		 1 												
+	S[H]W[L]W[L]W[L]P[H]		 2 			 4 	 4 	 4 				 1 	 1 				 2 							
+HHLLH	S[H]S[H]S[L]W[L]P[H]	 1 		 2 		 4 	 7 	 9 		 1 		 1 											 1 	
+	S[H]S[H]W[L]S[L]P[H]			 2 		 4 	 8 	 8 		 1 		 1 											 1 	 1 
+	S[H]S[H]W[L]W[L]P[H]		 1 	 1 		 4 	 5 	 7 				 1 		 1 			 1 			 1 				
+HLLHH	S[H]S[L]W[L]S[H]P[H]	 1 		 2 		 4 	 8 	 8 		 1 		 1 											 1 	 1 
+	S[H]W[L]S[L]S[H]P[H]			 2 		 4 	 9 	 7 		 1 		 1 											 2 	 1 
+	S[H]W[L]W[L]S[H]P[H]		 1 	 1 		 4 	 7 	 5 				 1 		 1 			 1 			 1 			 1 	 1 
+LLLLLLL	S[L]W[L]W[L]S[L]W[L]P[L]W[L]	 1 	 1 		 1 	 5 	 8 	 10 		 3 		 1 					 1 			 1 	 1 			
+	S[L]W[L]W[L]W[L]W[L]P[L]W[L]		 3 		 1 	 5 	 5 	 7 		 2 		 1 	 1 				 3 	 1 			 1 			

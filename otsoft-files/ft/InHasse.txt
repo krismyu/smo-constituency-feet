@@ -1,0 +1,10 @@
+digraph G {
+   1 [label="FtBin",fontsize = 14]
+   2 [label="Trochee",fontsize = 14]
+   3 [label="Edgemost-R",fontsize = 14]
+   4 [label="Parse-syll",fontsize = 14]
+   5 [label="Align(PWd,L;Ft,L)",fontsize = 14]
+   1 -> 4 [fontsize = 11]
+   1 -> 5 [fontsize = 11]
+   3 -> 5 [fontsize = 11]
+}

@@ -1,0 +1,16 @@
+# TEST-UNDERGEN.XFST
+# Time-stamp: <2016-03-18 14:11:32 amoebe>
+# XFST Code for testing the expressiveness of grammar and comparing to
+# gold standard output.
+# Prepare test for undergeneration: compose final transducer with gold
+# standard set of permitted outputs for up to 5 syllables
+
+# Compose final transducer with gold standard outputs to
+# make sure we get exactly the expected outputs
+
+define Outputs5;
+
+define ChkLSmo LSmo .o. Outputs5;
+push ChkLSmo;
+lower-side
+write text > chk-undergen.txt;

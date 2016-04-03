@@ -1,0 +1,55 @@
+The following constraints show a stringency relationship -- not necessarily a logical one, but in the data given.
+
+The following constraints are never violated (and are ignored in the listing below).
+NoFinalLongLapse
+
+NoExtendedLapse	 has a strict subset of the violations of 	*Lapse
+NoLapseFollowingHeavy	 has a strict subset of the violations of 	*Lapse
+NoInitialLapse	 has a strict subset of the violations of 	*Lapse
+LapseAtEnd	 has a strict subset of the violations of 	*Lapse
+LapseAtPeak	 has a strict subset of the violations of 	*Lapse
+*LapseInTrough	 has a strict subset of the violations of 	*Lapse
+*Clash	 has a strict subset of the violations of 	Align(x1,L)
+*Clash	 has a strict subset of the violations of 	Align(x1,R)
+ClashAtLeftEdge	 has a strict subset of the violations of 	*Clash
+NoClashAtPeak	 has a strict subset of the violations of 	*Clash
+Align(x2,R)	 has a strict subset of the violations of 	Align(x1,R)
+LapseAtPeak	 has a strict subset of the violations of 	Align(x2,R)
+Align(PWd,x2R)	 has a strict subset of the violations of 	Align(x2,R)
+NonfinalityL	 has a strict subset of the violations of 	Align(x2,L)
+NoExtendedLapse	 has a strict subset of the violations of 	Align(x2,L)
+NoInitWS	 has a strict subset of the violations of 	Align(x2,L)
+NoInitialLapse	 has a strict subset of the violations of 	Align(x2,L)
+LapseAtPeak	 has a strict subset of the violations of 	Align(x2,L)
+Align(PWd,x1,L	 has a strict subset of the violations of 	Align(x2,L)
+NonfinalityL	 has a strict subset of the violations of 	Align(x1,L)
+NoExtendedLapse	 has a strict subset of the violations of 	Align(x1,L)
+NoInitWS	 has a strict subset of the violations of 	Align(x1,L)
+NoInitialLapse	 has a strict subset of the violations of 	Align(x1,L)
+LapseAtPeak	 has a strict subset of the violations of 	Align(x1,L)
+*LapseInTrough	 has a strict subset of the violations of 	Align(x1,L)
+Align(PWd,x1,L	 has a strict subset of the violations of 	Align(x1,L)
+ClashAtLeftEdge	 has a strict subset of the violations of 	Align(x1,L)
+NoClashAtPeak	 has a strict subset of the violations of 	Align(x1,L)
+InitialGridMark	 has a strict subset of the violations of 	Align(x1,R)
+NoExtendedLapse	 has a strict subset of the violations of 	Align(x1,R)
+NoLapseFollowingHeavy	 has a strict subset of the violations of 	Align(x1,R)
+NoInitWS	 has a strict subset of the violations of 	Align(x1,R)
+LapseAtPeak	 has a strict subset of the violations of 	Align(x1,R)
+*LapseInTrough	 has a strict subset of the violations of 	Align(x1,R)
+Align(PWd,x2R)	 has a strict subset of the violations of 	Align(x1,R)
+ClashAtLeftEdge	 has a strict subset of the violations of 	Align(x1,R)
+NoClashAtPeak	 has a strict subset of the violations of 	Align(x1,R)
+NonfinalityL	 has a strict subset of the violations of 	SWP
+NoInitWS	 has a strict subset of the violations of 	SWP
+LapseAtPeak	 has a strict subset of the violations of 	SWP
+NoExtendedLapse	 has a strict subset of the violations of 	InitialGridMark
+LapseAtPeak	 has a strict subset of the violations of 	InitialGridMark
+NoExtendedLapse	 has a strict subset of the violations of 	LapseAtEnd
+LapseAtPeak	 has a strict subset of the violations of 	NoExtendedLapse
+NoInitWS	 has a strict subset of the violations of 	Align(PWd,x1,L
+NoInitialLapse	 has a strict subset of the violations of 	Align(PWd,x1,L
+LapseAtPeak	 has a strict subset of the violations of 	LapseAtEnd
+*LapseInTrough	 has a strict subset of the violations of 	LapseAtEnd
+LapseAtPeak	 has a strict subset of the violations of 	Align(PWd,x2R)
+

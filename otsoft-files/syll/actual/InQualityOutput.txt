@@ -1,0 +1,1364 @@
+\ti\ftResults of Applying Recursive Constraint Demotion to In.txt
+
+\hrRankings for In.txt	3-14-2016	\pn
+
+\cn3-14-2016, 11:55 a.m.
+
+\cnOTSoft 2.4
+\cnRelease date 1/19/2016
+
+
+\h1Result
+A ranking was found that generates the correct outputs.
+\ks
+\ts3
+\ntStratum	Constraint Name	Abbreviation
+Stratum #1	WSP	WSP
+	NonfinalityL	NonfinalityL
+	NoLapseFollowingHeavy	NoLapseFollowingHeavy
+	NoInitWS	NoInitWS
+Stratum #2	Align(x2,R)	Align(x2,R)
+Stratum #3	*Clash	*Clash
+Stratum #4	*Lapse	*Lapse
+Stratum #5	Align(x1,L)	Align(x1,L)
+\te\ke
+
+\h1Tableaux
+\ts6\ks
+/igoa/	\wsF\wei(gOa)	(Igo)a	(Igo)(A)	i(goA)	igo(A)
+WSP					
+\hdNonfinalityL			*!
+	*!
+	*!
+
+\hdNoLapseFollowingHeavy			\sh	\sh	\sh
+\hdNoInitWS			\sh	\sh	\sh
+Align(x2,R)	*
+	**!
+	\sh	\sh	\sh
+*Clash	\sh	\sh	\sh	\sh	\sh
+*Lapse	\sh	*
+\sh	\sh	*
+\sh	*
+\sh
+Align(x1,L)	*
+\sh	\sh	**
+\sh	**
+\sh	**
+\sh
+\ke\te
+\ts4\ks
+/lava:/	\wsF\welavA:	lAvA:	lAva:
+WSP			*!
+
+\hdNonfinalityL			\sh
+\hdNoLapseFollowingHeavy			\sh
+\hdNoInitWS			\sh
+Align(x2,R)			*
+\sh
+*Clash		*!
+	\sh
+*Lapse	\sh	\sh	\sh
+Align(x1,L)	*
+\sh	*
+\sh	\sh
+\ke\te
+\ts5\ks
+/talie:/	\wsF\wetAliE:	taliE:	talIE:	tAlie:
+WSP				*!
+
+\hdNonfinalityL				\sh
+\hdNoLapseFollowingHeavy				\sh
+\hdNoInitWS			*!
+	\sh
+Align(x2,R)			\sh	**
+\sh
+*Clash			*
+\sh	\sh
+*Lapse		*!
+	\sh	*
+\sh
+Align(x1,L)	**
+\sh	**
+\sh	***
+\sh	\sh
+\ke\te
+\ts4\ks
+/le:mu:/	\wsF\welE:mU:	le:mU:	lE:mu:
+WSP		*!
+	*!
+
+\hdNonfinalityL	\sh	\sh	\sh
+\hdNoLapseFollowingHeavy	\sh	\sh	\sh
+\hdNoInitWS	\sh	\sh	\sh
+Align(x2,R)	\sh	\sh	*
+\sh
+*Clash	*
+\sh	\sh	\sh
+*Lapse	\sh	\sh	\sh
+Align(x1,L)	*
+\sh	*
+\sh	\sh
+\ke\te
+\ts9\ks
+/temokalasi/	\wsF\we(tEmo)ka(lAsi)	tEmOkalAsi	tEmokAlasi	(tEmo)ka(lAsi)Pleft	te(mOka)(lAsi)	tEmokAlasI	temOkalasI	temOkAlasI
+WSP								
+\hdNonfinalityL						*!
+	*!
+	*!
+
+\hdNoLapseFollowingHeavy						\sh	\sh	\sh
+\hdNoInitWS					*!
+	\sh	*
+\sh	*
+\sh
+Align(x2,R)	*
+	*
+	**!
+	**!**
+	*
+\sh	\sh	\sh	\sh
+*Clash		*!
+	\sh	\sh	\sh	\sh	\sh	*
+\sh
+*Lapse	*
+\sh	\sh	*
+\sh	*
+\sh	\sh	\sh	*
+\sh	\sh
+Align(x1,L)	***
+\sh	****
+\sh	**
+\sh	***
+\sh	****
+\sh	******
+\sh	*****
+\sh	*******
+\sh
+\ke\te
+\ts3\ks
+/palanikeke/	\wsF\we(pAla)ni(kEke)	pa(lAni)(kEke)
+WSP		
+\hdNonfinalityL		
+\hdNoLapseFollowingHeavy		
+\hdNoInitWS		*!
+
+Align(x2,R)	*
+\sh	*
+\sh
+*Clash	\sh	\sh
+*Lapse	*
+\sh	\sh
+Align(x1,L)	***
+\sh	****
+\sh
+\ke\te
+\ts6\ks
+/sikalamu/	\wsF\we(sIka)(lAmu)	sika(lAmu)	(sIka)(lAmu)Pleft	(sikA)(lAmu)	si(kAla)mu
+WSP					
+\hdNonfinalityL					
+\hdNoLapseFollowingHeavy					
+\hdNoInitWS				*!
+	*!
+
+Align(x2,R)	*
+	*
+	**!*
+	*
+\sh	**
+\sh
+*Clash			\sh	*
+\sh	\sh
+*Lapse		*!
+	\sh	\sh	*
+\sh
+Align(x1,L)	**
+\sh	**
+\sh	**
+\sh	***
+\sh	*
+\sh
+\ke\te
+\ts5\ks
+/pi:niki/	\wsF\we(pI:)(nIki)	(pI:)(nIki)Pleft	(pI:)niki	pi:(nIki)
+WSP				*!
+
+\hdNonfinalityL				\sh
+\hdNoLapseFollowingHeavy			*!
+	\sh
+\hdNoInitWS			\sh	\sh
+Align(x2,R)	*
+	**!
+	**
+\sh	*
+\sh
+*Clash	*
+\sh	*
+\sh	\sh	\sh
+*Lapse	\sh	\sh	*
+\sh	\sh
+Align(x1,L)	*
+\sh	*
+\sh	\sh	*
+\sh
+\ke\te
+\ts4\ks
+/LLLH/	\wsF\weS[L]W[L]W[L]P[H]	S[L]S[L]W[L]P[H]	W[L]S[L]W[L]P[H]
+WSP			
+\hdNonfinalityL			
+\hdNoLapseFollowingHeavy			
+\hdNoInitWS			*!
+
+Align(x2,R)			\sh
+*Clash		*!
+	\sh
+*Lapse	*
+\sh	\sh	\sh
+Align(x1,L)	***
+\sh	****
+\sh	****
+\sh
+\ke\te
+\ts3\ks
+/HLLH/	\wsF\weS[H]S[L]W[L]P[H]	S[H]W[L]S[L]P[H]
+WSP		
+\hdNonfinalityL		
+\hdNoLapseFollowingHeavy		
+\hdNoInitWS		
+Align(x2,R)		
+*Clash	*
+	*
+
+*Lapse		
+Align(x1,L)	****
+	*****!
+
+\ke\te
+\ts4\ks
+/LLLLH/	\wsF\weS[L]W[L]S[L]W[L]P[H]	S[L]W[L]W[L]W[L]P[H]	W[L]S[L]W[L]W[L]P[H]
+WSP			
+\hdNonfinalityL			
+\hdNoLapseFollowingHeavy			
+\hdNoInitWS			*!
+
+Align(x2,R)			\sh
+*Clash			\sh
+*Lapse		*!*
+	*
+\sh
+Align(x1,L)	******
+\sh	****
+\sh	*****
+\sh
+\ke\te
+\ts5\ks
+/HLLLL/	\wsF\weS[H]S[L]W[L]P[L]W[L]	S[H]W[L]P[L]W[L]W[L]	S[H]W[L]W[L]P[L]W[L]	S[H]W[L]S[L]W[L]P[L]
+WSP				
+\hdNonfinalityL				*!
+
+\hdNoLapseFollowingHeavy			*!
+	\sh
+\hdNoInitWS			\sh	\sh
+Align(x2,R)	*
+	**!
+	*
+\sh	\sh
+*Clash	*
+\sh	\sh	\sh	\sh
+*Lapse	\sh	*
+\sh	*
+\sh	\sh
+Align(x1,L)	****
+\sh	**
+\sh	***
+\sh	***
+\sh
+\ke\te
+\ts4\ks
+/LHLLH/	\wsF\weW[L]S[H]S[L]W[L]P[H]	W[L]S[H]W[L]S[L]P[H]	W[L]S[H]W[L]W[L]P[H]
+WSP			
+\hdNonfinalityL			
+\hdNoLapseFollowingHeavy			*!
+
+\hdNoInitWS			\sh
+Align(x2,R)			\sh
+*Clash	*
+	*
+	\sh
+*Lapse			*
+\sh
+Align(x1,L)	*******
+	********!
+	*****
+\sh
+\ke\te
+\ts3\ks
+/HLLLH/	\wsF\weS[H]W[L]S[L]W[L]P[H]	S[H]W[L]W[L]W[L]P[H]
+WSP		
+\hdNonfinalityL		
+\hdNoLapseFollowingHeavy		
+\hdNoInitWS		
+Align(x2,R)		
+*Clash		
+*Lapse		*!*
+
+Align(x1,L)	******
+\sh	****
+\sh
+\ke\te
+\ts4\ks
+/HHLLH/	\wsF\weS[H]S[H]S[L]W[L]P[H]	S[H]S[H]W[L]S[L]P[H]	S[H]S[H]W[L]W[L]P[H]
+WSP			
+\hdNonfinalityL			
+\hdNoLapseFollowingHeavy			*!
+
+\hdNoInitWS			\sh
+Align(x2,R)			\sh
+*Clash	**
+	**
+	*
+\sh
+*Lapse			*
+\sh
+Align(x1,L)	*******
+	********!
+	*****
+\sh
+\ke\te
+\ts4\ks
+/HLLHH/	\wsF\weS[H]S[L]W[L]S[H]P[H]	S[H]W[L]S[L]S[H]P[H]	S[H]W[L]W[L]S[H]P[H]
+WSP			
+\hdNonfinalityL			
+\hdNoLapseFollowingHeavy			*!
+
+\hdNoInitWS			\sh
+Align(x2,R)			\sh
+*Clash	**
+	**
+	*
+\sh
+*Lapse			*
+\sh
+Align(x1,L)	********
+	*********!
+	*******
+\sh
+\ke\te
+\ts3\ks
+/LLLLLLL/	\wsF\weS[L]W[L]W[L]S[L]W[L]P[L]W[L]	S[L]W[L]W[L]W[L]W[L]P[L]W[L]
+WSP		
+\hdNonfinalityL		
+\hdNoLapseFollowingHeavy		
+\hdNoInitWS		
+Align(x2,R)	*
+	*
+
+*Clash		
+*Lapse	*
+	**!*
+
+Align(x1,L)	********
+\sh	*****
+\sh
+\ke\te
+
+\h1Status of Proposed Constraints:  Necessary or Unnecessary
+\ts2
+\ntConstraint	Status
+*Lapse	Necessary
+*Clash	Necessary
+Align(x2,R)	Necessary
+Align(x1,L)	Necessary
+WSP	Necessary
+NonfinalityL	Necessary
+NoLapseFollowingHeavy	Necessary
+NoInitWS	Necessary
+\te
+\ks
+
+\h1Ranking Arguments, based on the Fusional Reduction Algorithm
+This run sought to obtain the Skeletal Basis, intended to keep each final ranking argument as pithy as possible.
+\ke
+Original set of ERCs
+\ks
+\ts3
+\ntIndex	ERC	Reason
+1	WeLWeWee	for /igoa/, i(gOa) >> i(goA), i(gOa) >> igo(A)
+2	eeLWeWee	for /igoa/, i(gOa) >> (Igo)(A)
+3	WeWLeeee	for /igoa/, i(gOa) >> (Igo)a
+4	eeWLWeee	for /lava:/, lavA: >> lAva:
+5	WeWLWeee	for /talie:/, tAliE: >> tAlie:
+6	eLeeWeee	for /le:mu:/, lE:mU: >> le:mU:, (pI:)(nIki) >> pi:(nIki)
+7	eLWLWeee	for /le:mu:/, lE:mU: >> lE:mu:
+8	LeeWeeeW	for /temokalasi/, (tEmo)ka(lAsi) >> te(mOka)(lAsi), (pAla)ni(kEke) >> pa(lAni)(kEke), S[L]W[L]W[L]P[H] >> W[L]S[L]W[L]P[H]
+9	eeLWeWeW	for /temokalasi/, (tEmo)ka(lAsi) >> temOkalasI
+10	eeWLeeee	for /temokalasi/, (tEmo)ka(lAsi) >> tEmokAlasi
+11	LeLWeWee	for /temokalasi/, (tEmo)ka(lAsi) >> tEmokAlasI
+12	LWLWeWeW	for /temokalasi/, (tEmo)ka(lAsi) >> temOkAlasI
+13	LWeWeeee	for /temokalasi/, (tEmo)ka(lAsi) >> tEmOkalAsi, S[L]W[L]W[L]P[H] >> S[L]S[L]W[L]P[H]
+14	WeWLeeeW	for /sikalamu/, (sIka)(lAmu) >> si(kAla)mu
+15	WLWLeeWe	for /pi:niki/, (pI:)(nIki) >> (pI:)niki
+16	WeeLeeee	for /LLLLH/, S[L]W[L]S[L]W[L]P[H] >> S[L]W[L]W[L]W[L]P[H], S[H]W[L]S[L]W[L]P[H] >> S[H]W[L]W[L]W[L]P[H], S[L]W[L]W[L]S[L]W[L]P[L]W[L] >> S[L]W[L]W[L]W[L]W[L]P[L]W[L]
+17	WeeLeeeW	for /LLLLH/, S[L]W[L]S[L]W[L]P[H] >> W[L]S[L]W[L]W[L]P[H]
+18	eLLLeWee	for /HLLLL/, S[H]S[L]W[L]P[L]W[L] >> S[H]W[L]S[L]W[L]P[L]
+19	WLeLeeWe	for /HLLLL/, S[H]S[L]W[L]P[L]W[L] >> S[H]W[L]W[L]P[L]W[L], W[L]S[H]S[L]W[L]P[H] >> W[L]S[H]W[L]W[L]P[H], S[H]S[H]S[L]W[L]P[H] >> S[H]S[H]W[L]W[L]P[H], S[H]S[L]W[L]S[H]P[H] >> S[H]W[L]W[L]S[H]P[H]
+20	WLWLeeee	for /HLLLL/, S[H]S[L]W[L]P[L]W[L] >> S[H]W[L]P[L]W[L]W[L]
+\te\ke
+Recursive ranking search
+
+Recursive search has now reached this location in the search tree:  1
+
+	Fusion of this ERC set is:  
+		LLLLWWWW
+   The following ERCs form the total information-loss residue:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		LEEWEEEW
+		EELWEWEW
+		EEWLEEEE
+		LELWEWEE
+		LWLWEWEW
+		LWEWEEEE
+		WEWLEEEW
+		WLWLEEWE
+		WEELEEEE
+		WEELEEEW
+		ELLLEWEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLLLWWWW
+
+	Skeletal basis of the fusion:
+		EEEEWWWW
+
+	eeeeWWWW has no L's, so it cannot be retained in the Skeletal Basis.
+
+Recursive search has now reached this location in the search tree:  1, 5
+Current set of ERCs is based on constraint #5, WSP
+Working with the following ERC set:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		LEEWEEEW
+		EELWEWEW
+		EEWLEEEE
+		LELWEWEE
+		LWLWEWEW
+		LWEWEEEE
+		WEWLEEEW
+		WLWLEEWE
+		WEELEEEE
+		WEELEEEW
+		ELLLEWEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLLLEWWW
+   The following ERCs form the total information-loss residue:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		LEEWEEEW
+		EELWEWEW
+		EEWLEEEE
+		LELWEWEE
+		LWLWEWEW
+		LWEWEEEE
+		WEWLEEEW
+		WLWLEEWE
+		WEELEEEE
+		WEELEEEW
+		ELLLEWEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLLLEWWW
+
+	Skeletal basis of the fusion:
+		EEEEEWWW
+
+	eeeeeWWW has no L's, so it cannot be retained in the Skeletal Basis.
+
+Recursive search has now reached this location in the search tree:  1, 5, 6
+Current set of ERCs is based on constraint #6, NonfinalityL
+Working with the following ERC set:
+		WEWLEEEE
+		LEEWEEEW
+		EEWLEEEE
+		LWEWEEEE
+		WEWLEEEW
+		WLWLEEWE
+		WEELEEEE
+		WEELEEEW
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLWLEEWW
+   The following ERCs form the total information-loss residue:
+		WEWLEEEE
+		LEEWEEEW
+		EEWLEEEE
+		LWEWEEEE
+		WEWLEEEW
+		WLWLEEWE
+		WEELEEEE
+		WEELEEEW
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLWLEEWW
+
+	Skeletal basis of the fusion:
+		EEWEEEWW
+
+	eeWeeeWW has no L's, so it cannot be retained in the Skeletal Basis.
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 3
+Current set of ERCs is based on constraint #3, Align(x2,R)
+Working with the following ERC set:
+		LEEWEEEW
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+		WLELEEWE
+
+	Fusion of this ERC set is:  
+		LLELEEWW
+   The following ERCs form the total information-loss residue:
+		LEEWEEEW
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+		WLELEEWE
+
+	Fusion of total residue:
+		LLELEEWW
+
+	Skeletal basis of the fusion:
+		EEEEEEWW
+
+	eeeeeeWW has no L's, so it cannot be retained in the Skeletal Basis.
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 3, 7
+Current set of ERCs is based on constraint #7, NoLapseFollowingHeavy
+Working with the following ERC set:
+		LEEWEEEW
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+
+	Fusion of this ERC set is:  
+		LWELEEEW
+   The following ERCs form the total information-loss residue:
+		LEEWEEEW
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+
+	Fusion of total residue:
+		LWELEEEW
+
+	Skeletal basis of the fusion:
+		EWEEEEEW
+
+	eWeeeeeW has no L's, so it cannot be retained in the Skeletal Basis.
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 3, 7, 2
+Current set of ERCs is based on constraint #2, *Clash
+Working with the following ERC set:
+		LEEWEEEW
+		WEELEEEE
+		WEELEEEW
+
+	Fusion of this ERC set is:  
+		LEELEEEW
+   The following ERCs form the total information-loss residue:
+		WEELEEEE
+
+	Fusion of total residue:
+		WEELEEEE
+
+	Skeletal basis of the fusion:
+		LEEEEEEW
+
+	LEEEEEEW includes at least one L and thus is not entailed by WEELEEEE.
+	Thus it may be retained in the Skeletal Basis of ERCs.
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 3, 7, 2, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WEELEEEE
+
+	Fusion of this ERC set is:  
+		WEELEEEE
+   The following ERCs form the total information-loss residue:
+
+
+	WEELEEEE has a null residue and thus may be retained in the Skeletal Basis of ERCs.
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 3, 7, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		LWEWEEEE
+		WEELEEEE
+
+	Fusion of this ERC set is:  
+		LWELEEEE
+   The following ERCs form the total information-loss residue:
+		WEELEEEE
+
+	Fusion of total residue:
+		WEELEEEE
+
+	Skeletal basis of the fusion:
+		LWEEEEEE
+
+	LWEEEEEE includes at least one L and thus is not entailed by WEELEEEE.
+	Thus it may be retained in the Skeletal Basis of ERCs.
+   ([1, 5, 6, 3, 7, 8, 2] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 3, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		LWEWEEEE
+		WEELEEEE
+		WLELEEWE
+
+	Fusion of this ERC set is:  
+		LLELEEWE
+   The following ERCs form the total information-loss residue:
+		LWEWEEEE
+		WEELEEEE
+
+	Fusion of total residue:
+		LWELEEEE
+
+	Skeletal basis of the fusion:
+		ELEEEEWE
+
+	ELEEEEWE includes at least one L and thus is not entailed by LWELEEEE.
+	Thus it may be retained in the Skeletal Basis of ERCs.
+   ([1, 5, 6, 3, 8, 7] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 7
+Current set of ERCs is based on constraint #7, NoLapseFollowingHeavy
+Working with the following ERC set:
+		WEWLEEEE
+		LEEWEEEW
+		EEWLEEEE
+		LWEWEEEE
+		WEWLEEEW
+		WEELEEEE
+		WEELEEEW
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLWLEEEW
+   The following ERCs form the total information-loss residue:
+		WEWLEEEE
+		LEEWEEEW
+		EEWLEEEE
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLWLEEEW
+
+	Skeletal basis of the fusion:
+		EEWEEEEW
+
+	eeWeeeeW has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 5, 6, 7, 3] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 7, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WEWLEEEE
+		EEWLEEEE
+		LWEWEEEE
+		WEELEEEE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLWLEEEE
+   The following ERCs form the total information-loss residue:
+		LWEWEEEE
+		WEELEEEE
+
+	Fusion of total residue:
+		LWELEEEE
+
+	Skeletal basis of the fusion:
+		ELWEEEEE
+
+	ELWEEEEE includes at least one L and thus is not entailed by LWELEEEE.
+	Thus it may be retained in the Skeletal Basis of ERCs.
+   ([1, 5, 6, 7, 8, 3] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 5, 6, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WEWLEEEE
+		EEWLEEEE
+		LWEWEEEE
+		WLWLEEWE
+		WEELEEEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLWLEEWE
+   The following ERCs form the total information-loss residue:
+		WEWLEEEE
+		EEWLEEEE
+		LWEWEEEE
+		WEELEEEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLWLEEWE
+
+	Skeletal basis of the fusion:
+		EEWEEEWE
+
+	eeWeeeWe has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 5, 6, 8, 3] not novel so not checked)
+   ([1, 5, 6, 8, 7] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 5, 7
+Current set of ERCs is based on constraint #7, NoLapseFollowingHeavy
+Working with the following ERC set:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		LEEWEEEW
+		EELWEWEW
+		EEWLEEEE
+		LELWEWEE
+		LWLWEWEW
+		LWEWEEEE
+		WEWLEEEW
+		WEELEEEE
+		WEELEEEW
+		ELLLEWEE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLLLEWEW
+   The following ERCs form the total information-loss residue:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		LEEWEEEW
+		EEWLEEEE
+		LELWEWEE
+		LWEWEEEE
+		WEWLEEEW
+		WEELEEEE
+		WEELEEEW
+		ELLLEWEE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLLLEWEW
+
+	Skeletal basis of the fusion:
+		EEEEEWEW
+
+	eeeeeWeW has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 5, 7, 6] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 5, 7, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLEEEE
+		LELWEWEE
+		LWEWEEEE
+		WEELEEEE
+		ELLLEWEE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLLLEWEE
+   The following ERCs form the total information-loss residue:
+		WEWLEEEE
+		EEWLEEEE
+		LWEWEEEE
+		WEELEEEE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLWLEEEE
+
+	Skeletal basis of the fusion:
+		EELEEWEE
+
+	EELEEWEE includes at least one L and thus is not entailed by LLWLEEEE.
+	Thus it may be retained in the Skeletal Basis of ERCs.
+   ([1, 5, 7, 8, 6] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 5, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLEEEE
+		LELWEWEE
+		LWEWEEEE
+		WLWLEEWE
+		WEELEEEE
+		ELLLEWEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLLLEWWE
+   The following ERCs form the total information-loss residue:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLEEEE
+		LELWEWEE
+		LWEWEEEE
+		WLWLEEWE
+		WEELEEEE
+		ELLLEWEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLLLEWWE
+
+	Skeletal basis of the fusion:
+		EEEEEWWE
+
+	eeeeeWWe has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 5, 8, 6] not novel so not checked)
+   ([1, 5, 8, 7] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 6
+Current set of ERCs is based on constraint #6, NonfinalityL
+Working with the following ERC set:
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		LEEWEEEW
+		EEWLEEEE
+		LWEWEEEE
+		WEWLEEEW
+		WLWLEEWE
+		WEELEEEE
+		WEELEEEW
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLWLWEWW
+   The following ERCs form the total information-loss residue:
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		LEEWEEEW
+		EEWLEEEE
+		LWEWEEEE
+		WEWLEEEW
+		WLWLEEWE
+		WEELEEEE
+		WEELEEEW
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLWLWEWW
+
+	Skeletal basis of the fusion:
+		EEWEWEWW
+
+	eeWeWeWW has no L's, so it cannot be retained in the Skeletal Basis.
+
+Recursive search has now reached this location in the search tree:  1, 6, 3
+Current set of ERCs is based on constraint #3, Align(x2,R)
+Working with the following ERC set:
+		ELEEWEEE
+		LEEWEEEW
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+		WLELEEWE
+
+	Fusion of this ERC set is:  
+		LLELWEWW
+   The following ERCs form the total information-loss residue:
+		ELEEWEEE
+		LEEWEEEW
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+		WLELEEWE
+
+	Fusion of total residue:
+		LLELWEWW
+
+	Skeletal basis of the fusion:
+		EEEEWEWW
+
+	eeeeWeWW has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 6, 3, 5] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 6, 3, 7
+Current set of ERCs is based on constraint #7, NoLapseFollowingHeavy
+Working with the following ERC set:
+		ELEEWEEE
+		LEEWEEEW
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+
+	Fusion of this ERC set is:  
+		LLELWEEW
+   The following ERCs form the total information-loss residue:
+		ELEEWEEE
+		LEEWEEEW
+		LWEWEEEE
+		WEELEEEE
+		WEELEEEW
+
+	Fusion of total residue:
+		LLELWEEW
+
+	Skeletal basis of the fusion:
+		EEEEWEEW
+
+	eeeeWeeW has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 6, 3, 7, 5] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 6, 3, 7, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		ELEEWEEE
+		LWEWEEEE
+		WEELEEEE
+
+	Fusion of this ERC set is:  
+		LLELWEEE
+   The following ERCs form the total information-loss residue:
+		LWEWEEEE
+		WEELEEEE
+
+	Fusion of total residue:
+		LWELEEEE
+
+	Skeletal basis of the fusion:
+		ELEEWEEE
+
+	ELEEWEEE includes at least one L and thus is not entailed by LWELEEEE.
+	Thus it may be retained in the Skeletal Basis of ERCs.
+   ([1, 6, 3, 7, 8, 5] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 6, 3, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		ELEEWEEE
+		LWEWEEEE
+		WEELEEEE
+		WLELEEWE
+
+	Fusion of this ERC set is:  
+		LLELWEWE
+   The following ERCs form the total information-loss residue:
+		ELEEWEEE
+		LWEWEEEE
+		WEELEEEE
+		WLELEEWE
+
+	Fusion of total residue:
+		LLELWEWE
+
+	Skeletal basis of the fusion:
+		EEEEWEWE
+
+	eeeeWeWe has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 6, 3, 8, 5] not novel so not checked)
+   ([1, 6, 3, 8, 7] not novel so not checked)
+   ([1, 6, 5] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 6, 7
+Current set of ERCs is based on constraint #7, NoLapseFollowingHeavy
+Working with the following ERC set:
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		LEEWEEEW
+		EEWLEEEE
+		LWEWEEEE
+		WEWLEEEW
+		WEELEEEE
+		WEELEEEW
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLWLWEEW
+   The following ERCs form the total information-loss residue:
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		LEEWEEEW
+		EEWLEEEE
+		LWEWEEEE
+		WEWLEEEW
+		WEELEEEE
+		WEELEEEW
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLWLWEEW
+
+	Skeletal basis of the fusion:
+		EEWEWEEW
+
+	eeWeWeeW has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 6, 7, 3] not novel so not checked)
+   ([1, 6, 7, 5] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 6, 7, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		EEWLEEEE
+		LWEWEEEE
+		WEELEEEE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLWLWEEE
+   The following ERCs form the total information-loss residue:
+		WEWLEEEE
+		ELEEWEEE
+		EEWLEEEE
+		LWEWEEEE
+		WEELEEEE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLWLWEEE
+
+	Skeletal basis of the fusion:
+		EEWEWEEE
+
+	eeWeWeee has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 6, 7, 8, 3] not novel so not checked)
+   ([1, 6, 7, 8, 5] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 6, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		EEWLEEEE
+		LWEWEEEE
+		WLWLEEWE
+		WEELEEEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLWLWEWE
+   The following ERCs form the total information-loss residue:
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		EEWLEEEE
+		LWEWEEEE
+		WLWLEEWE
+		WEELEEEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLWLWEWE
+
+	Skeletal basis of the fusion:
+		EEWEWEWE
+
+	eeWeWeWe has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 6, 8, 3] not novel so not checked)
+   ([1, 6, 8, 5] not novel so not checked)
+   ([1, 6, 8, 7] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 7
+Current set of ERCs is based on constraint #7, NoLapseFollowingHeavy
+Working with the following ERC set:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		LEEWEEEW
+		EELWEWEW
+		EEWLEEEE
+		LELWEWEE
+		LWLWEWEW
+		LWEWEEEE
+		WEWLEEEW
+		WEELEEEE
+		WEELEEEW
+		ELLLEWEE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLLLWWEW
+   The following ERCs form the total information-loss residue:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		LEEWEEEW
+		EELWEWEW
+		EEWLEEEE
+		LELWEWEE
+		LWLWEWEW
+		LWEWEEEE
+		WEWLEEEW
+		WEELEEEE
+		WEELEEEW
+		ELLLEWEE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLLLWWEW
+
+	Skeletal basis of the fusion:
+		EEEEWWEW
+
+	eeeeWWeW has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 7, 5] not novel so not checked)
+   ([1, 7, 6] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 7, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		EEWLEEEE
+		LELWEWEE
+		LWEWEEEE
+		WEELEEEE
+		ELLLEWEE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLLLWWEE
+   The following ERCs form the total information-loss residue:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		EEWLEEEE
+		LELWEWEE
+		LWEWEEEE
+		WEELEEEE
+		ELLLEWEE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLLLWWEE
+
+	Skeletal basis of the fusion:
+		EEEEWWEE
+
+	eeeeWWee has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 7, 8, 5] not novel so not checked)
+   ([1, 7, 8, 6] not novel so not checked)
+
+Recursive search has now reached this location in the search tree:  1, 8
+Current set of ERCs is based on constraint #8, NoInitWS
+Working with the following ERC set:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		EEWLEEEE
+		LELWEWEE
+		LWEWEEEE
+		WLWLEEWE
+		WEELEEEE
+		ELLLEWEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of this ERC set is:  
+		LLLLWWWE
+   The following ERCs form the total information-loss residue:
+		WELWEWEE
+		EELWEWEE
+		WEWLEEEE
+		EEWLWEEE
+		WEWLWEEE
+		ELEEWEEE
+		ELWLWEEE
+		EEWLEEEE
+		LELWEWEE
+		LWEWEEEE
+		WLWLEEWE
+		WEELEEEE
+		ELLLEWEE
+		WLELEEWE
+		WLWLEEEE
+
+	Fusion of total residue:
+		LLLLWWWE
+
+	Skeletal basis of the fusion:
+		EEEEWWWE
+
+	eeeeWWWe has no L's, so it cannot be retained in the Skeletal Basis.
+   ([1, 8, 5] not novel so not checked)
+   ([1, 8, 6] not novel so not checked)
+   ([1, 8, 7] not novel so not checked)
+
+\h1Ranking argumentation:  Final result
+The following set of ERCs forms the Skeletal Basis for the ERC set as a whole, and thus encapsulates the available ranking information.
+	LEEEEEEW
+	WEELEEEE
+	LWEEEEEE
+	ELEEEEWE
+	ELWEEEEE
+	EELEEWEE
+	ELEEWEEE
+The final rankings obtained are as follows:
+	NoInitWS >> *Lapse
+	*Lapse >> Align(x1,L)
+	*Clash >> *Lapse
+	NoLapseFollowingHeavy >> *Clash
+	Align(x2,R) >> *Clash
+	NonfinalityL >> Align(x2,R)
+	WSP >> *Clash
+
+\h1Mini-Tableaux
+The following small tableaux may be useful in presenting ranking arguments. They include all winner-rival comparisons in which there is just one winner-preferring constraint and at least one loser-preferring constraint.  Constraints not violated by either candidate are omitted.
+\ts3\ks
+/le:mu:/	\wsF\welE:mU:	le:mU:
+WSP		* 
+
+*Clash	*
+	
+Align(x1,L)	*
+	*
+
+\ke\te
+\ts3\ks
+/temokalasi/	\wsF\we(tEmo)ka(lAsi)	tEmokAlasi
+Align(x2,R)	*
+	** 
+
+*Lapse	*
+	*
+
+Align(x1,L)	***
+	**
+
+\ke\te
+\ts3\ks
+/pi:niki/	\wsF\we(pI:)(nIki)	pi:(nIki)
+WSP		* 
+
+Align(x2,R)	*
+	*
+
+*Clash	*
+	
+Align(x1,L)	*
+	*
+
+\ke\te
+\ts3\ks
+/LLLLH/	\wsF\weS[L]W[L]S[L]W[L]P[H]	S[L]W[L]W[L]W[L]P[H]
+*Lapse		* *
+
+Align(x1,L)	******
+	****
+
+\ke\te
+\ts3\ks
+/HLLLL/	\wsF\weS[H]S[L]W[L]P[L]W[L]	S[H]W[L]S[L]W[L]P[L]
+NonfinalityL		* 
+
+Align(x2,R)	*
+	
+*Clash	*
+	
+Align(x1,L)	****
+	***
+
+\ke\te
+\ts3\ks
+/HLLLH/	\wsF\weS[H]W[L]S[L]W[L]P[H]	S[H]W[L]W[L]W[L]P[H]
+*Lapse		* *
+
+Align(x1,L)	******
+	****
+
+\ke\te
+\ts3\ks
+/LLLLLLL/	\wsF\weS[L]W[L]W[L]S[L]W[L]P[L]W[L]	S[L]W[L]W[L]W[L]W[L]P[L]W[L]
+Align(x2,R)	*
+	*
+
+*Lapse	*
+	** *
+
+Align(x1,L)	********
+	*****
+
+\ke\te
