@@ -1,6 +1,6 @@
 # DIR-FT: GRAMMAR.XFST
 # XFST Code for Samoan primary stress in monomorphemes, using feet, direct approach
-# Time-stamp: <2016-03-18 14:24:37 amoebe>
+# Time-stamp: <2017-03-15 16:03:39 amoebe>
 
 # Run input file to generate all possible stress patterns over heavy
 # and light syllables (P=primary, S=secondary, W = unstressed)
@@ -27,6 +27,10 @@ define Light [ "[" "L" "]" ];
 
 define ParseFoot [ [ [ ? Light ]^2 | [ ? Heavy ] ] -> "(" ... ")" ];
 
+# Try:
+# define Test [ [ {L}|{H}|{LL}|{HL}|{LLL}] .o. SWParse .o. ElevateProm .o. ParseFoot];
+# push Test;
+# lower;
 
 echo << Define restrictions on feet >> 
 
@@ -48,13 +52,9 @@ define Foot [ "(" [ \["(" | ")"] ]*  ")" ];
 define PrimaryFoot [ Foot & $["P"] ];
 
 # Try:
-# define Test ParseFeet .o. TrocheesOnly .o. PrimaryFootRight;
+# define Test [ [ {L}|{H}|{LL}|{HL}|{LLL}] .o. SWParse .o. ElevateProm .o. ParseFoot .o. PrimaryFoot];
 # push Test;
-# down "L";
-# down "H";
-# down "HL";
-# down "LL";
-# down "LLL";
+# lower;
 
 # Foot form: trochaic
 
@@ -84,33 +84,21 @@ echo << Define restrictions on words in terms of feet >>
 
 define PrimaryFootRight [ \"P"* PrimaryFoot ];
 
-# this kills off lone L, W[L], and HL final strings
+# this kills off lone L and HL final strings, since those don't have
+#any parses that end in a primary stressed foot.
 
-# Try:
-# define Test ParseFeet .o. TrocheesOnly .o. PrimaryFootRight;
+# define Test [ [ {L}|{H}|{LL}|{HL}|{LLL}] .o. SWParse .o. ElevateProm .o. ParseFoot .o. PrimaryFootRight];
 # push Test;
-# down "L";
-# down "H";
-# down "HL";
-# down "LL";
-# down "LLL";
-# down "LHL";
-
+# lower;
 
 # Every foot in an input string must be trochaic.
 # The input string may include interspersed weak lights.
 
 define TrocheesOnly [ Trochee | WeakLight ]*;
 
-# Try:
-# define Test ParseFeet .o. TrocheesOnly;
+# define Test [ [ {L}|{H}|{LL}|{HL}|{LLL}] .o. SWParse .o. ElevateProm .o. ParseFoot .o. TrocheesOnly];
 # push Test;
-# down "L";
-# down "HL";
-# down "LHL";
-# down "LL";
-# down "LLL";
-# down "LHL";
+# lower;
 
 
 # Don't have a sequence of a weak light followed by a LL foot at the
@@ -123,15 +111,9 @@ define InitialDactyl ~[ WeakLight LLFoot ?+ ];
 # dactyls, and allows for WPW for a 3L word.
 
 # Try:
-# define Test ParseFeet .o. TrocheesOnly .o. PrimaryFootRight .o. InitialDactyl;
+# define Test [ [ {LLL}|{LLLH}|{LLLLL}|{HLLLH}|{LLLLLLL}] .o. SWParse .o. ElevateProm .o. ParseFoot .o. TrocheesOnly .o. PrimaryFootRight .o. InitialDactyl];
 # push Test;
-# down "LLL";
-# down "LLLH";
-# down "LLLLL";
-# down "HLLLH";
-# down "LLLLLLL";
-
-
+# lower;
 
 # Optional for readability, required for testing since I use X in the
 # gold standard/benchmark
