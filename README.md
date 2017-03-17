@@ -10,7 +10,7 @@ The repository contains two sub-directories:
 
 1. `xfst-code`: this contains shell scripts and xfst code to define
    the grammars and compare them to the gold standard. More details
-   are in the section [xfst code](#xfst-code).
+   are in the section [xfst code](#xfst-code), including [annotated output from a sample run](#sample-run-for-direct-foot-code).
 2. `otsoft-files`: this contains files from runs with [OTSoft](http://www.linguistics.ucla.edu/people/hayes/otsoft/) that show
    how partial rankings were computed. More details are in the section
    [OTSoft files](#otsoft-files).
@@ -57,8 +57,126 @@ To run the OT syllable code, type:
 make ot-syll
 ```
 
+## Sample run for direct foot code
+
+Here's the output you should get from running the direct foot code, annotated, after invoking `make dir-ft` in the `xfst-code` sub-directory. I have broken it up into chunks to make it easier to describe.
+
+```bash
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -C dir-ft all
++++ Sort gold standard correct list of 47 outputs +++
+sort "../auxiliary/gold-output5-footed.txt" > tmp-gold
++++ Define grammar in xfst and generate outputs for testing over/undergeneration +++
+xfst -f grammar.xfst
+```
+This first output chunk shows the creation of a temporary `tmp-gold` file which is a text file of the correctly footed/stressed outputs for the range of data being considered, and shows the call to `xfst` to run the code in `grammar.xfst`.
+
+```bash
+<< Generating language of input strings >> 
+Opening input file '../auxiliary/gen.xfst'
+Defined 'Input': 656 bytes. 1 state, 2 arcs, Circular.
+Defined 'SWParse': 2.5 Kb. 4 states, 9 arcs, Circular.
+Defined 'ElevateProm': 704 bytes. 1 state, 4 arcs, Circular.
+Defined 'Gen': 888 bytes. 4 states, 7 arcs, Circular.
+Closing file ../auxiliary/gen.xfst...
+```
+This second output chunk above shows the first output from running `grammar.xfst` in `xfst`, which runs `../auxiliary/gen.xfst` to define the finite state transducer for *Gen*.
+
+```bash
+<< Parsing into (binary) feet >> 
+Defined 'Heavy': 776 bytes. 4 states, 3 arcs, 1 path.
+Defined 'Light': 776 bytes. 4 states, 3 arcs, 1 path.
+Defined 'ParseFoot': 5.0 Kb. 18 states, 93 arcs, Circular.
+```
+This third output chunk above shows more output from running `grammar.xfst` in `xfst`. Here we've defined transducers for auxiliary terms `Heavy` (heavy syllables) and `Light` (light syllables), which we refer to in the definition of `ParseFoot`, the transduction that parses the input from `Gen` into feet.
+
+```bash
+<< Define restrictions on feet >> 
+Defined 'Foot': 488 bytes. 3 states, 3 arcs, Circular.
+Defined 'PrimaryFoot': 848 bytes. 4 states, 6 arcs, Circular.
+Defined 'WeakLight': 832 bytes. 5 states, 4 arcs, 1 path.
+Defined 'LLFoot': 1.3 Kb. 11 states, 15 arcs, 6 paths.
+Defined 'Trochee': 1.4 Kb. 11 states, 17 arcs, 14 paths.
+```
+This fourth output chunk above shows more output from running `grammar.xfst` in `xfst`. Here we've defined transducers that place restrictions on feet. 
+
+```bash
+<< Define restrictions on words in terms of feet >> 
+Defined 'PrimaryFootRight': 944 bytes. 4 states, 10 arcs, Circular.
+Defined 'TrocheesOnly': 1.5 Kb. 13 states, 21 arcs, Circular.
+Defined 'InitialDactyl': 3.6 Kb. 16 states, 105 arcs, Circular.
+Defined 'ReplaceUnparsedX': 3.4 Kb. 9 states, 43 arcs, Circular.
+Defined 'LSmo': 2.5 Kb. 31 states, 36 arcs, Circular.
+```
+This fifth output chunk above shows some more output from running `grammar.xfst` in `xfst`. Here we've defined transducers that place restrictions on stress patterns in words in terms of feet, and we've defined the final transduction `LSmo`: that's the whole grammar.
+
+Now we're ready for testing the expressiveness of the defined grammar `LSmo`. In the output chunk below, it can be seen that at this point, `grammar.xfst` has called `../auxiliary/test-overgen.xfst`, which is code written to prepare to test for overgeneration of the grammar `LSmo`.  It compute outputs of all possible inputs up to 5 syllables by composing all of the possible inputs up to 5 syllables (`Inputs5`) with `LSmo`, and these outputs are written to a textfile `chk-overgen.txt`.
+
+```bash
+<< Testing expressiveness of grammar >> 
+Opening input file '../auxiliary/test-overgen.xfst'
+Opening input file '../auxiliary/input5.txt'
+Reading UTF-8 text from '../auxiliary/input5.txt' 
+1.0 Kb. 6 states, 10 arcs, 62 paths.
+Defined 'Inputs5': 1.0 Kb. 6 states, 10 arcs, 62 paths.
+Defined 'GenInputs5': 4.7 Kb. 67 states, 79 arcs, 47 paths.
+4.7 Kb. 67 states, 79 arcs, 47 paths.
+Opening 'chk-overgen.txt'
+Closing 'chk-overgen.txt'
+Closing file ../auxiliary/test-overgen.xfst...
+```
+In the next output chunk,  `grammar.xfst` has called  `../auxiliary/test-undergen.xfst`, which is code written to prepare to test for undergeneration of the grammar `LSmo`. It composes the final transducer `LSmo` with a "gold standard" set of permitted outputs for up to 5 syllables (defined by the author), `Outputs5` and writes the output to a textfile `chk-undergen.txt`
+
+```bash
+Opening input file '../auxiliary/gold-output5-footed.txt'
+Reading UTF-8 text from '../auxiliary/gold-output5-footed.txt' 
+4.7 Kb. 67 states, 79 arcs, 47 paths.
+Opening input file '../auxiliary/test-undergen.xfst'
+Defined 'Outputs5': 4.7 Kb. 67 states, 79 arcs, 47 paths.
+Defined 'ChkLSmo': 4.7 Kb. 67 states, 79 arcs, 47 paths.
+4.7 Kb. 67 states, 79 arcs, 47 paths.
+Opening 'chk-undergen.txt'
+Closing 'chk-undergen.txt'
+Closing file ../auxiliary/test-undergen.xfst...
+bye.
+```
+
+With `bye`, now we've quit `xfst` and are ready to the final checks for overgeneration and undergeneration. The first chunk below looks for any differences between the `tmp-gold` file (a text file of the correctly footed/stressed outputs for the range of data being considered) and the output from `LSmo` for this same range of data, all light-heavy sequences up to 5 syllables. We see no output telling us that the`Files differ`, so there are no differences: `LSmo` didn't derive strings in the language other than the correct ones. The bash command `wc -l` also counts the number of lines in the output text file, there are 47, as expected.
+
+```bash
++++ For generated output of grammar for L* H* inputs up to 5 syllables +++
++++ check against correct set of outputs for inputs up to 5 syll +++
++++ Check if any overgeneration compared to gold standard +++
+sort < chk-overgen.txt | sed '1d' | diff tmp-gold - || echo 'Files differ'
++++ Check number of output strings from chk-overgen.txt +++
+sed '1d' chk-overgen.txt | wc -l
+      47
+```
+
+The final output chunk below looks for any differences between the `tmp-gold` file (a text file of the correctly footed/stressed outputs for the range of data being considered) and the output from `LSmo` in the set of correct set of outputs defined by the author. We see no output telling us that the`Files differ`, so there are no differences: `LSmo` didn't miss deriving any strings in the language. The bash command `wc -l` also counts the number of lines in the output text file, there are 47, as expected.
+
+```bash
++++ From intersecting output of grammar with correct set of outputs for inputs up to 5 syll +++
++++ Check against correct set of outputs for inputs up to 5 syll +++
+sort < chk-undergen.txt | sed '1d' | diff tmp-gold - || echo 'Files differ'
++++ Check number of output strings from chk-undergen.txt +++
+sed '1d' chk-undergen.txt | wc -l
+      47
+rm -f tmp-gold
+```
+
 
 # OTSoft files
+
+Constraint rankings were computed using OTSoft, which is a Windows
+program available for download
+[here](http://www.linguistics.ucla.edu/people/hayes/otsoft/). The
+citation for this software is: 
+
+```
+Hayes, Bruce, Bruce Tesar, and Kie Zuraw (2013) "OTSoft 2.5," software
+package, http://www.linguistics.ucla.edu/people/hayes/otsoft/.
+```
+
 
 The `otsoft-files` directory contains two sub-directories:
 

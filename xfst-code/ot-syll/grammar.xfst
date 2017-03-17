@@ -1,6 +1,6 @@
 # DIR-SYLL: GRAMMAR.XFST
 # XFST Code for Samoan primary stress in monomorphemes, using syllables, Karttunen OT
-# Time-stamp: <2016-03-18 15:41:46 amoebe>
+# Time-stamp: <2017-03-16 11:22:11 amoebe>
 
 
 ###############################
@@ -27,20 +27,31 @@ source ../auxiliary/gen.xfst
 ###############################
 ###############################
 
+# Preliminaries
+define Heavy "[" "H" "]";
+define Light "[" "L" "]";
+
+define Weak "W" [ Heavy | Light] ;
+define Stressed ["S"|"P"] [ Heavy | Light ] ;
+
+# Alternative definitions
+# define Weak "W" "[" [H|L] "]" ;
+# define Stressed ["S"|"P"] "[" [H|L] "]" ;
+
+
 ##########################
 ###### Culminativity #####
 ##########################
+
+# See Beesley and Karttunen p. 97
+# $.A denotes the language of all strings that contain exactly one
+# occurrence of a string from A
 
 define Culminativity [ $.P ];
 
 ####################
 ###### NoClash #####
 ####################
-
-
-
-define Weak "W" "[" [H|L] "]" ;
-define Stressed ["S"|"P"] "[" [H|L] "]" ;
 
 
 # *Clash: no adjacent S's
@@ -258,10 +269,6 @@ define No4Lapse ~[$[Weak]^5] &  ~[[$[W2]]^4] & ~[?* [Weak]^4 $[[Weak]^2]] & ~[$[
 
 # My definition: S[H] or P[H], no W[H]
 
-# Preliminaries
-define Heavy "[" "H" "]";
-define Light "[" "L" "]";
-
 # Define subrule for H syllables, WSP
 
 define WSP [ Heavy  => \W _ ];
@@ -284,13 +291,12 @@ define WSP [ Heavy  => \W _ ];
 
 # Preliminaries
 
-define Secondary ["S" [Heavy | Light] ];
-define Primary ["P" [Heavy | Light] ];
-define AnySyllable [Weak | Secondary | Primary];
-
+# Alternative definition:
+# define Secondary ["S" [Heavy | Light] ];
+# define Primary ["P" [Heavy | Light] ];
+# define AnySyllable [Weak | Secondary | Primary];
 
 define AnySyllable [ ? "[" ? "]" ];
-
 
 # Every primary stress must be at the right edge.
 define Alignx2R0 Primary => _ .#.;

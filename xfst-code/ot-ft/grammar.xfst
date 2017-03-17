@@ -1,6 +1,6 @@
 # OT-FT: GRAMMAR.XFST
 # XFST Code for Samoan primary stress in monomorphemes, using feet, Karttunen OT
-# Time-stamp: <2016-03-18 14:12:36 amoebe>
+# Time-stamp: <2017-03-16 11:09:47 amoebe>
 
 # Run input file to generate all possible stress patterns over heavy
 # and light syllables (P=primary, S=secondary, W = unstressed)
@@ -64,6 +64,10 @@ echo << Define Culminativity >>
 ###############################
 
 # Allow only strings containing exactly one P
+
+# See Beesley and Karttunen p. 97
+# $.A denotes the language of all strings that contain exactly one
+# occurrence of a string from A
 
 define Culminativity [ $.P ];
 
