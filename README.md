@@ -2,7 +2,8 @@
 
 This repository includes code to define grammars of Samoan stress over
 monomorphs in xfst, and to compare their output with the correct "gold
-standard" output.
+standard" output. The most recent write-up of this work is the PDF file in the top-level directory.
+
 
 **To run this code you need to install `xfst`, which is available [here](https://web.stanford.edu/~laurik/.book2software/):**
 
